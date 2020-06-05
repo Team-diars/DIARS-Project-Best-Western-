@@ -1,3 +1,4 @@
+// Nav Function
 $('#bar').click(function() {
         if ($("#bar").prop("checked")) { 
             $(".body-nav").addClass("body-nav-active");

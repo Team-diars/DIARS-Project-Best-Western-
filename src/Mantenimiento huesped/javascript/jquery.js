@@ -6,7 +6,7 @@ $('#bar').click(function() {
         else { 
             $(".body-nav").removeClass("body-nav-active");  
             $(".body-content").removeClass("body-content-active");      
-        } 
+        }
 });
 $(document).ready(function(){
     $(".body-nav-ul li:has(ul)").click(function(e){
