@@ -3,7 +3,7 @@ $('#bar').click(function() {
         if ($("#bar").prop("checked")) { 
             $(".body-nav").addClass("body-nav-active");
             $(".body-content").addClass("body-content-active");
-        } 
+        }
         else { 
             $(".body-nav").removeClass("body-nav-active");  
             $(".body-content").removeClass("body-content-active");      
@@ -26,6 +26,7 @@ $(document).ready(function(){
         }
     })
 });
+// * Adding button animation
 $(document).ready(function(){
     $("#register").click(function(e){
         $( "#bar" ).prop( "checked", false );
@@ -33,7 +34,7 @@ $(document).ready(function(){
         $(".body-content").removeClass("body-content-active");   
         $("#overlay").removeClass("overlay-inactive");   
         $("#overlay").addClass("overlay");    
-        $("#body-form").slideDown();
+        $("#body-form").animate(1000).fadeIn();
         $("#body-form").removeClass("body-form-inactive");
         $("#body-form").addClass("body-form");
 

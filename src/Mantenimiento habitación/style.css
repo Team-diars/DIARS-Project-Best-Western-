@@ -250,3 +250,13 @@ span:active{
 .table-head input{
     width: fit-content;
 }
+
+
+/* New addition*/
+div .body-content, div .body-table{
+    background-color: #121616;
+    
+}
+td,th{
+    color: #ffffff;
+}
