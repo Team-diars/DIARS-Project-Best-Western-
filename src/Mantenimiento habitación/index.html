@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="style.css">
         <link href="normalize.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
         <script src="javascript/jquery-3.4.1.min.js" ></script> 
     </head>
     <body>
@@ -32,7 +33,7 @@
                 <ul class="body-nav-ul">
                     <li>
                         <span class="caret inactive-span">
-                            <i class="fas fa-house-user"></i>
+                            <i class="nav-icon fas fa-house-user"></i>
                             <label>Rooms</label>
                             <i class="arrow fas fa-chevron-left"></i>
                         </span>
@@ -184,12 +185,15 @@
                 <div class="body-table">
                     <div class="table-head">
                         <button id="register" class="btn btn-success">+ Add new room</button>
-                        <input class="form-control" type="text" placeholder="Find by room number">                          
+                        <div class="form-group search-bar-div">
+                            <input class="form-control form-control-lg" type="text" placeholder="Search by any type">                          
+                        </div>                        
                     </div>
                     <br><br>
-                    <table class="table table-bordered">
+                    <!--Bootstrap table effect-->
+                    <table class="table table-hover">
                         <thead>
-                            <tr class="table-active">
+                            <tr class="table-dark">
                                 <th scope="col">Room Number</th>
                                 <th scope="col">Room Type</th>
                                 <th scope="col">Floor</th>
@@ -201,7 +205,7 @@
                             </tr>                                
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr class="table-active">
                                 <td>202</th>
                                 <td>Single</td>
                                 <td>2</td>
@@ -252,8 +256,8 @@
                                 </select>
                             </div><br>   
                             <div class="form-button">
-                                <input class="btn btn-primary" type="submit" value="Save">
-                                <button id="cancel" class="btn btn-danger">Cancel</button>
+                                <input class="btn btn-primary btn-lg" type="submit" value="Save">
+                                <button id="cancel" class="btn btn-danger btn-lg">Cancel</button>
                             </div>                                                                                                                                       
                         </form>
                     </div>
