@@ -3,12 +3,13 @@ $('#bar').click(function() {
         if ($("#bar").prop("checked")) { 
             $(".body-nav").addClass("body-nav-active");
             $(".body-content").addClass("body-content-active");
-        } 
+        }
         else { 
             $(".body-nav").removeClass("body-nav-active");  
             $(".body-content").removeClass("body-content-active");      
         } 
 });
+
 $(document).ready(function(){
     $(".body-nav-ul li:has(ul)").click(function(e){
         e.preventDefault(); 
@@ -26,6 +27,7 @@ $(document).ready(function(){
         }
     })
 });
+// * Adding button animation
 $(document).ready(function(){
     $("#register").click(function(e){
         $( "#bar" ).prop( "checked", false );
@@ -33,7 +35,7 @@ $(document).ready(function(){
         $(".body-content").removeClass("body-content-active");   
         $("#overlay").removeClass("overlay-inactive");   
         $("#overlay").addClass("overlay");    
-        $("#body-form").slideDown();
+        $("#body-form").slideDown(500).show(); // * Efecto animacion y mostrar
         $("#body-form").removeClass("body-form-inactive");
         $("#body-form").addClass("body-form");
 
@@ -49,7 +51,7 @@ $(document).ready(function(){
         $("#overlay").removeClass("overlay");   
         $("#overlay").addClass("overlay-inactive");  
         $("#body-form").removeClass("body-form");
-        $("#body-form").hide() 
+        $("#body-form").hide()
 
         $(".head").removeClass("disable-selection");
         $(".body-nav").removeClass("disable-selection");
