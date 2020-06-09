@@ -46,6 +46,15 @@ $(document).ready(function(){
     })
 });
 
+// * Inside of form-register
+$(document).ready(function(){
+    $('#body-form .form-body .btn').on('click',function(){
+        $('#body-form .form-body .btn').removeClass('active')
+        $(this).addClass('active')
+    });
+});
+
+
 $(document).ready(function(){
     $("#cancel").click(function(e){
         $("#overlay").removeClass("overlay");   
