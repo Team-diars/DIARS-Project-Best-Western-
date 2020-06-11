@@ -1,0 +1,263 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <link href="normalize.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="javascript/jquery-3.4.1.min.js" ></script> 
+    </head>    
+    <body>
+        <div id="overlay" class="overlay-inactive"></div>
+        <div class="header">
+            <div class="header-logo">
+                <img src="img/logo.png">
+            </div>
+            <div class="header-content">
+                <input type="checkbox" id="bar">
+                <label class="checkbox-label" for="bar"><i class="fa fa-bars"></i></label>         
+                <div class="header-content-user">
+                    <img src="img/user.png">
+                    <label>User</label>
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            <div class="body-nav">
+                <div class="body-nav-label">
+                    <label>Administration</label>
+                </div>
+                <ul class="body-nav-ul">
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="fas fa-house-user"></i>
+                            <label>Rooms</label>
+                            <i class="arrow fas fa-chevron-left"></i>
+                        </span>
+                        <ul class="nested">
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Maintenance</label>
+                                </span>
+                            </li>     
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Housekeeping list</label>
+                                </span>
+                            </li>                                                                          
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="nav-icon fas fa-book"></i>
+                            <label>Booking</label>
+                        </span>                                         
+                    </li>
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="nav-icon fas fa-user"></i>
+                            <label>Guests</label>
+                        </span>                        
+                    </li>
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="nav-icon fa fa-file"></i>
+                            <label>Reports</label>
+                            <i class="arrow fas fa-chevron-left"></i>
+                        </span>
+                        <ul class="nested">
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Daily incomes</label>
+                                </span>
+                            </li>     
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Monthly incomes</label>
+                                </span>
+                            </li>                                                                                                                                                       
+                        </ul>                            
+                    </li>
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="nav-icon fas fa-users"></i>
+                            <label>Workers</label>
+                        </span>                       
+                    </li>
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="nav-icon fas fa-warehouse"></i>
+                            <label>Inventory</label>
+                            <i class="arrow fas fa-chevron-left"></i>
+                        </span>
+                        <ul class="nested">
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Maintenance Product</label>
+                                </span>
+                            </li>                             
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Inventory receipt</label>
+                                </span>
+                            </li>            
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Inventory issue</label>
+                                </span>
+                            </li>                                                                                                   
+                        </ul>                        
+                    </li>
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="nav-icon fas fa-cash-register"></i>
+                            <label>Cash module</label>
+                            <i class="arrow fas fa-chevron-left"></i>
+                        </span>
+                        <ul class="nested">
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Open cash drawer</label>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Close cash drawer</label>
+                                </span>
+                            </li>        
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Generate invoice</label>
+                                </span>
+                            </li>            
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Generate ticket</label>
+                                </span>
+                            </li>                                                                                             
+                        </ul>                        
+                    </li>
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="fas fa-shopping-cart"></i>
+                            <label>Purchase order</label>
+                        </span>                      
+                    </li>  
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="fas fa-wrench"></i>
+                            <label>Maintenance reports</label>
+                            <i class="arrow fas fa-chevron-left"></i>
+                        </span>    
+                        <ul class="nested">
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Generate</label>
+                                </span>
+                            </li>                             
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>See</label>
+                                </span>
+                            </li>                                                                                                            
+                        </ul>                                            
+                    </li>                                         
+                </ul>
+            </div>
+            <div class="body-content">
+                <label class="title"><i class="nav-icon fas fa-user"></i> Maintenance guest</label>
+                <div class="body-form">
+                    <div class="form-body">
+                        <form>
+                            <div class="input-group">
+                                <div class="form-input">
+                                    <label>Name:</label>
+                                    <input class="form-control" type="text" id="name" required>
+                                </div>
+                                <div class="form-input">
+                                    <label>Last name:</label>
+                                    <input class="form-control" type="text" id="lastname" required>
+                                </div>
+                            </div><br>  
+                            <div class="input-group">
+                                <div class="form-input">
+                                    <label>Doc. type:</label>
+                                    <select class="form-control">
+                                        <option value="0" hidden>Driver license</option>
+                                        <option value="1">State id card</option>
+                                    </select>
+                                </div>          
+                                <div class="form-input">
+                                    <label>ID number:</label>
+                                    <input class="form-control" type="text" id="document" required>
+                                </div>                         
+                            </div> <br>   
+                            <div class="input-group">
+                                <div class="form-input">
+                                    <label>State:</label>
+                                    <select class="form-control">
+                                        <option value="0" hidden>California</option>
+                                        <option value="1">Recepcionist</option>
+                                        <option value="2">Housekeeper</option>
+                                        <option value="3">Housekeeper supervisor</option>
+                                        <option value="4">Head of maintenance</option>
+                                    </select>
+                                </div>  
+                                <div class="form-input">
+                                    <label>City:</label>
+                                    <select class="form-control">
+                                        <option value="0" hidden>Adelanto</option>
+                                        <option value="1">Recepcionist</option>
+                                        <option value="2">Housekeeper</option>
+                                        <option value="3">Housekeeper supervisor</option>
+                                        <option value="4">Head of maintenance</option>
+                                    </select>
+                                </div>      
+                            </div> <br>  
+                            <div class="input-group">
+                                <div class="form-input">
+                                    <label>Address:</label>
+                                    <input class="form-control" type="text" id="address" required>
+                                </div>
+                                <div class="form-input">
+                                    <label>Homephone:</label>
+                                    <input class="form-control" type="text" id="address" required>
+                                </div>                                                                                                        
+                            </div> <br>  
+                            <div class="input-group">
+                                <div class="form-input">
+                                    <label>Cellphone:</label>
+                                    <input class="form-control" type="text" id="address" required>
+                                </div>
+                                <div class="form-input">
+                                    <label>E-mail:</label>
+                                    <input class="form-control" type="email" id="mail" required>
+                                </div>     
+                            </div>                                                                                                                                                                   
+                        </form>
+                    </div>
+                    <div class="form-button">
+                        <input class="btn btn-primary" type="submit" value="Accept">
+                        <button id="cancel" class="btn btn-danger">Cancel</button>
+                    </div>                       
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="javascript/jquery.js"></script>
+</html>
