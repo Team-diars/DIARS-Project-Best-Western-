@@ -1,0 +1,299 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <link href="normalize.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="javascript/jquery-3.4.1.min.js" ></script> 
+    </head>    
+    <body>
+        <div id="overlay" class="overlay-inactive"></div>
+        <div class="header">
+            <div class="header-logo">
+                <img src="img/logo.png">
+            </div>
+            <div class="header-content">
+                <input type="checkbox" id="bar">
+                <label class="checkbox-label" for="bar"><i class="fa fa-bars"></i></label>         
+                <div class="header-content-user">
+                    <img src="img/user.png">
+                    <label>User</label>
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            <div class="body-nav">
+                <div class="body-nav-label">
+                    <label>Administration</label>
+                </div>
+                <ul class="body-nav-ul">
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="fas fa-house-user"></i>
+                            <label>Rooms</label>
+                            <i class="arrow fas fa-chevron-left"></i>
+                        </span>
+                        <ul class="nested">
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Maintenance</label>
+                                </span>
+                            </li>     
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Housekeeping list</label>
+                                </span>
+                            </li>                                                                          
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="nav-icon fas fa-book"></i>
+                            <label>Booking</label>
+                        </span>                                         
+                    </li>
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="nav-icon fas fa-user"></i>
+                            <label>Guests</label>
+                        </span>                        
+                    </li>
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="nav-icon fa fa-file"></i>
+                            <label>Reports</label>
+                            <i class="arrow fas fa-chevron-left"></i>
+                        </span>
+                        <ul class="nested">
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Daily incomes</label>
+                                </span>
+                            </li>     
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Monthly incomes</label>
+                                </span>
+                            </li>                                                                                                                                                       
+                        </ul>                            
+                    </li>
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="nav-icon fas fa-users"></i>
+                            <label>Workers</label>
+                        </span>                       
+                    </li>
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="nav-icon fas fa-warehouse"></i>
+                            <label>Inventory</label>
+                            <i class="arrow fas fa-chevron-left"></i>
+                        </span>
+                        <ul class="nested">
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Maintenance Product</label>
+                                </span>
+                            </li>                             
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Inventory receipt</label>
+                                </span>
+                            </li>            
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Inventory issue</label>
+                                </span>
+                            </li>                                                                                                   
+                        </ul>                        
+                    </li>
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="nav-icon fas fa-cash-register"></i>
+                            <label>Cash module</label>
+                            <i class="arrow fas fa-chevron-left"></i>
+                        </span>
+                        <ul class="nested">
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Open cash drawer</label>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Close cash drawer</label>
+                                </span>
+                            </li>        
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Generate invoice</label>
+                                </span>
+                            </li>            
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Generate ticket</label>
+                                </span>
+                            </li>                                                                                             
+                        </ul>                        
+                    </li>
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="fas fa-shopping-cart"></i>
+                            <label>Purchase order</label>
+                        </span>                      
+                    </li>  
+                    <li>
+                        <span class="caret inactive-span">
+                            <i class="fas fa-wrench"></i>
+                            <label>Maintenance reports</label>
+                            <i class="arrow fas fa-chevron-left"></i>
+                        </span>    
+                        <ul class="nested">
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>Generate</label>
+                                </span>
+                            </li>                             
+                            <li>
+                                <span class="inactive-span">
+                                    <i class="fas fa-caret-right"></i>
+                                    <label>See</label>
+                                </span>
+                            </li>                                                                                                            
+                        </ul>                                            
+                    </li>                                         
+                </ul>
+            </div>
+            <div class="body-content">
+                <label class="title"><i class="nav-icon fas fa-user"></i> Maintenance Guest</label>
+                <div class="body-table">
+                    <div class="table-head">
+                        <button id="register" class="btn btn-success">+ Add new guest</button>
+                        <input class="form-control" type="text" placeholder="Find by name">                          
+                    </div>
+                    <br><br>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="table-active">
+                                <th scope="col">Full name</th>
+                                <th scope="col">Document type</th>
+                                <th scope="col">Document number</th>
+                                <th scope="col">State</th>
+                                <th scope="col">City</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Cellphone</th>
+                                <th scope="col">E-mail</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
+                            </tr>                                
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Flavio Belisario Daza Ramirez</th>
+                                <td>ID card</td>
+                                <td>98412345</td>
+                                <td>North Carolina</td>
+                                <td>Charlotte</td>
+                                <td>7592 South Sleepy Hollow Street West Babylon, NY 11704</td>
+                                <td>651234</th>
+                                <td>94312344</th>
+                                <td>FBelisario@gmail.com</th>
+                                <td><button class="btn btn-primary">Edit</button></th>
+                                <td><button class="btn btn-danger">Delete</button></th>
+                            </tr>                          
+                        </tbody>
+                    </table>
+                </div>
+                <div id="body-form" class="body-form-inactive">
+                    <div class="form-head">
+                        <label>Maintenance guest</label>
+                    </div>
+                    <div class="form-body">
+                        <form>
+                            <div class="form-group">
+                                <div class="form-input">
+                                    <label>First Name</label>
+                                    <input class="form-control" type="text" id="name" required>
+                                </div>
+                                <div class="form-input">
+                                    <label>Last name</label>
+                                    <input class="form-control" type="text" id="lastname" required>
+                                </div> 
+                            </div><br>
+                            <div class="form-group">
+                                <div class="form-input">
+                                    <label>Doc type</label>
+                                    <select class="form-control">
+                                        <option value="0" hidden>---</option>
+                                        <option value="1">ID card</option>
+                                        <option value="2">Passport</option>
+                                      </select>
+                                </div>
+                                <div class="form-input">
+                                    <label>Doc number</label>
+                                    <input class="form-control" type="text" id="document" required>
+                                </div><br> 
+                            </div><br> 
+                            <div class="form-group">
+                                <div class="form-input">
+                                    <label>State</label>
+                                    <select class="form-control">
+                                        <option value="0" hidden>---</option>
+                                        <option value="1">EEUU</option>
+                                        <option value="2">Germany</option>
+                                        <option value="3">Peru</option>
+                                    </select>
+                                </div>
+                                <div class="form-input">
+                                    <label>City</label>
+                                    <input class="form-control" type="text" id="address" required>
+                                </div>
+                            </div><br>  
+                            <div class="form-group">
+                                <div class="form-input">
+                                    <label>Address</label>
+                                    <input class="form-control" type="text" id="address" required>
+                                </div>
+                                <div class="form-input">
+                                    <label>Phone</label>
+                                    <input class="form-control" type="text" id="homephone" required>
+                                </div>
+                            </div><br>   
+                            <div class="form-group">
+                                <div class="form-input">
+                                    <label>Cellphone</label>
+                                    <input class="form-control" type="text" id="homephone" required>
+                                </div>
+                                <div class="form-input">
+                                    <label>E-mail</label>
+                                    <input class="form-control" type="email" id="mail" required>
+                                </div>
+                            </div>                                                                                                                     
+                        </form>
+                        <div class="form-button">
+                            <input class="btn btn-primary" type="submit" value="Accept">
+                            <button id="cancel" class="btn btn-danger">Cancel</button>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="javascript/jquery.js"></script>
+</html>

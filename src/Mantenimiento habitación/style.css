@@ -230,7 +230,7 @@ span:active{
     background-color: #303030;    
 }
 .form-body form{
-    width: 100%;
+    width: 100%;    
     display: flex;
     flex-direction: column;
     padding: 10px 40px 10px 40px;
@@ -272,12 +272,23 @@ span:active{
 }
 
 /* New addition*/
+table thead{
+    background-color: #232323;
+}
+.table tbody{
+    background-color: #DFDEE2;
+}
 div .body-content, div .body-table{
     background-color: transparent;
-    
 }
-td,th{
-    color: #ffffff;
+th{
+    color: #ffffff;    
+}
+tbody td{
+    align-self: center;
+}
+.btn-group-toggle{
+    width:100%;
 }
 .body-content{
     background-color: #999696;
