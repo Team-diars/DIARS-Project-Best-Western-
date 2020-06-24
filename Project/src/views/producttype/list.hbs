@@ -1,0 +1,62 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md">
+            <div class="card text-center">
+                <div class="card-body p-4">
+                    <div class="row mx-auto form-header">
+                        <div class="form-header-title">
+                            <div>
+                                <i class="fas fa-boxes mr-2" style="font-size: 20px;"></i>
+                            </div>
+                            <h4>Maitenance product type</h4>
+                        </div>
+                        <a class="btn btn-success" href="producttype/add">
+                            <i class="fa fa-plus mr-1" aria-hidden="true"></i>Add
+                        </a>
+                    </div>
+                    <div class="row mx-auto mt-2">
+                        <input class="form-control" type="text" placeholder="Filter by any attribute">
+                    </div>
+                    <div class="row mx-auto mt-2">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Product type</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each tprod}}
+                                <tr>
+                                    <th scope="row">{{index @index }}</th>
+                                    <td>{{ name }}</td>
+                                    <td>{{ description }}</td>
+                                    <td>
+                                        <a href="producttype/view/{{ptype_id}}">
+                                            <button type="button" class="btn btn-secondary">
+                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                            </button>
+                                        </a>
+                                        <a href="producttype/edit/{{ptype_id}}">
+                                            <button type="button" class="btn btn-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </a>
+                                        <a href="producttype/delete/{{ptype_id}}">
+                                            <button type="button" class="btn btn-danger">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
