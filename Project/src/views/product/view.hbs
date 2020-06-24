@@ -1,0 +1,49 @@
+<div class="container container-resp">
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-header pl-5">
+                <div class="form-header-title">
+                    <div>
+                        <i class="fas fa-boxes mr-2" style="font-size: 20px;"></i>
+                    </div>
+                    <h3 class="title">Maitenance staff</h3>
+                </div>
+            </div>
+            <form class="form-body">
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="product_code" value="{{product.product_code}}" autocomplete="off" readonly>
+                        <label class="placeholder">Id product</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="name" value="{{product.name}}" autocomplete="off" readonly>
+                        <label class="placeholder">Name</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="current_stock" value="{{product.current_stock}}" readonly>
+                        <label class="placeholder">Current stock</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="number" name="critical_stock" min="0" value="{{product.critical_stock}}" step="1" autocomplete="off" readonly>
+                        <label class="placeholder">Critical stock</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <select class="form-control" size="1" name="ptype" id="" disabled>
+                            <option value="{{product.ptype_id}}" hidden>{{product.ptypename}}</option>
+                        </select>
+                        <label class="placeholder">Product type</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <a class="btn btn-danger btn-block" href="/product">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
