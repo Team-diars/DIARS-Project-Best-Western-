@@ -1,0 +1,85 @@
+<div class="container container-resp p-4">
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-header pl-5">
+                <div class="form-header-title">
+                    <div>
+                        <i class="fa fa-users mr-2" aria-hidden="true" style="font-size: 20px;"></i>
+                    </div>
+                    <h3 class="title">Maitenance staff</h3>
+                </div>
+            </div>
+            <form class="form-body">
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="name" autocomplete="off" value="{{worker.name}}" readonly>
+                        <label class="placeholder">First name</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="lastname" autocomplete="off" value="{{worker.lastname}}" readonly>
+                        <label class="placeholder">Last name</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="worker_code" autocomplete="off" value="{{worker.worker_code}}" readonly>
+                        <label class="placeholder">Worker id</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="ssn" autocomplete="off" value="{{worker.ssn}}" readonly>
+                        <label class="placeholder">SSN</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <select class="form-control" size="1" name="state" id="select-state" disabled>
+                            <option value="{{worker.state}}" hidden>{{worker.state}}</option>
+                        </select>
+                        <label class="placeholder">State</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <select class="form-control" size="1" name="city" id="select-city" disabled>
+                            <option value="{{worker.city}}" hidden>{{worker.city}}</option>
+                        </select>
+                        <label class="placeholder">City</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="address" autocomplete="off" value="{{worker.address}}" readonly>
+                        <label class="placeholder">Address</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="email" name="email" autocomplete="off" value="{{worker.email}}" readonly>
+                        <label class="placeholder">E-mail</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="phone" autocomplete="off" value="{{worker.phone}}" readonly>
+                        <label class="placeholder">Phone</label>
+
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="cellphone" autocomplete="off" value="{{worker.cellphone}}" readonly>
+                        <label class="placeholder">Cellphone</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <select class="form-control" size="1" name="jobpos" id="jobpos" disabled>
+                            <option value="{{worker.jobpos_id}}" hidden>{{worker.jobpos}}</option>
+                        </select>
+                        <label class="placeholder">Job position</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <a class="btn btn-danger btn-block" href="/worker">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

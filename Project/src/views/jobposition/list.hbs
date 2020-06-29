@@ -1,0 +1,78 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md">
+            <div class="card text-center">
+                <div class="card-body p-4">
+                    <div class="row mx-auto form-header">
+                        <div class="form-header-title">
+                            <div>
+                                <i class="fa fa-users mr-2" aria-hidden="true" style="font-size: 20px;"></i>
+                            </div>
+                            <h4>Maitenance job position</h4>
+                        </div>
+                        <a class="btn btn-success" href="jobposition/add">
+                            <i class="fa fa-plus mr-1" aria-hidden="true"></i>Add
+                        </a>
+                    </div>
+                    <div class="form-group row mx-auto mt-2">
+                        <input class="form-control" type="text" placeholder="Filter by any attribute" id="searchbar">
+                    </div>
+                    <div class="row mx-auto mt-2">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table">
+                                {{#each jobpos}}
+                                <tr>
+                                    <th scope="row">{{index @index }}</th>
+                                    <td>{{ jobpos }}</td>
+                                    <td>{{ description }}</td>
+                                    <td>
+                                        <a href="jobposition/view/{{jobpos_id}}">
+                                            <button type="button" class="btn btn-secondary">
+                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                            </button>
+                                        </a>
+                                        <a href="jobposition/edit/{{jobpos_id}}">
+                                            <button type="button" class="btn btn-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </a>
+                                        <a href="jobposition/delete/{{jobpos_id}}">
+                                            <button type="button" class="btn btn-danger">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const searchbar = document.getElementById('searchbar');
+    searchbar.addEventListener('keyup',()=>{
+        const term = searchbar.value.toLowerCase();
+        const table = document.getElementById('table');
+        const rows = table.getElementsByTagName('tr');
+        Array.from(rows).forEach((rows)=>{
+            const name = rows.children[1].textContent;
+            if(name.toLowerCase().indexOf(term)!=-1){
+                rows.style.display='table-row';
+            }else{
+                rows.style.display='none';
+            }
+        });
+    })
+</script>

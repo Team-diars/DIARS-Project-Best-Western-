@@ -1,0 +1,70 @@
+<div class="container container-resp p-4">
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-header pl-5">
+                <div class="form-header-title">
+                    <div>
+                        <i class="fa fa-bed mr-2" aria-hidden="true" style="font-size: 20px;"></i>
+                    </div>
+                    <h3 class="title">Maitenance room type</h3>
+                </div>
+            </div>
+            <form class="form-body" action="/roomtype/edit/{{troom.troom_id}}" method="POST">
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="roomtype" autocomplete="off"
+                            value="{{troom.roomtype}}" required>
+                        <label class="placeholder">Room type</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="number" step=".01" name="price" autocomplete="off" value="{{troom.price}}"
+                            required>
+                        <label class="placeholder">Price</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <select class="form-control" size="1" name="bedtype" id="bedtype" required>
+                            {{#selected troom.bedtype}}
+                            <option value="" hidden></option>
+                            <option value="Single">Single</option>
+                            <option value="Double">Double</option>
+                            <option value="Queen">Queen</option>
+                            <option value="King">King</option>
+                            {{/selected}}
+
+                        </select>
+                        <label class="placeholder">Type bed</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="number" step="1" name="nbeds" id="nbeds" autocomplete="off" min="1"
+                            value="{{troom.nbeds}}" required>
+                        <label class="placeholder">N° beds</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="capacity" id="roomcapacity"
+                            value="{{troom.capacity}}" readonly required>
+                        <label class="placeholder">Capacity</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <textarea class="form-control" name="description" id="description" cols="30" rows="2" autocomplete="off">{{troom.description}}</textarea>
+                        <label class="placeholder">Description</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <a class="btn btn-danger btn-block" href="/roomtype">Cancel</a>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input type="submit" class="btn btn-primary btn-block" value="Accept">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

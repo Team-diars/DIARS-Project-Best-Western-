@@ -1,0 +1,91 @@
+body{
+    height: 100%;
+    width: 97vw;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+}
+.top-report{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+}
+.top-report img{
+    height: 70px;
+    width: 300px;
+}
+.top-report .title{
+    display: flex;
+    justify-content: center;
+}
+/*Info doc*/
+.body{
+    width: 100%;
+    height: 80%;
+    padding: 10px;
+}
+.top-info{
+    height: 90px;
+    margin-bottom: 5px;
+}
+.top-info-line{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+}
+.top-info-line .title{
+    width: 100px;
+}
+.customer-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.customer-info .vendor{
+    width: 350px;
+    height: fit-content ;
+}
+.customer-info .customer{
+    width: 350px;
+    height: fit-content ;
+}
+.info-title{
+    background-color: #8EA9DB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    font-weight: 800;
+}
+.info-line{
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+}
+.info-line p{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.info-line .title{
+    width: 30%;
+}
+.table-info{
+    width: 100%;
+}
+.table-info table{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+.table-info thead tr{
+    background-color: #8EA9DB;
+}
+

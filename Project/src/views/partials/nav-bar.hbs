@@ -1,0 +1,180 @@
+
+{{#if user}}
+<div id="bar-nav" class="nav-body inactive-nav">
+  <ul class="nav vertical-nav">
+    <li class="nav-item">
+      <a class="nav-link dropdown-father" href="#">
+        <div class="nav-op">
+          <i class="fa fa-bed" aria-hidden="true"></i>
+          <label>Room</label>
+        </div>
+        <i class="arrow fas fa-chevron-left" aria-hidden="true"></i>
+      </a>
+      <ul class="nav dropdown-child">
+        <li class="nav-item" onclick="">
+          <a class="nav-link" href="/room">
+            <div class="nav-op">
+              <i class="fas fa-angle-right"></i>
+              <label>Maintenance room</label>
+            </div>
+          </a>
+          <a class="nav-link" href="/roomtype">
+            <div class="nav-op">
+              <i class="fas fa-angle-right"></i>
+              <label>Maintenance room type</label>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link dropdown-father" href="#">
+        <div class="nav-op">
+          <i class="fa fa-book" aria-hidden="true"></i>
+          <label>Module booking</label>
+        </div>
+        <i class="arrow fas fa-chevron-left" aria-hidden="true"></i>
+      </a>
+      <ul class="nav dropdown-child">
+        <li class="nav-item" onclick="/booking">
+          <a class="nav-link" href="">
+            <div class="nav-op">
+              <i class="fas fa-angle-right"></i>
+              <label>Booking</label>
+            </div>
+          </a>
+          <a class="nav-link" href="/booked-room">
+            <div class="nav-op">
+              <i class="fas fa-angle-right"></i>
+              <label>Booked rooms</label>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/guest">
+        <div class="nav-op">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          <label>Guest</label>
+        </div>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link dropdown-father" href="#">
+        <div class="nav-op">
+          <i class="fa fa-users" aria-hidden="true"></i>
+          <label>Staff</label>
+        </div>
+        <i class="arrow fas fa-chevron-left" aria-hidden="true"></i>
+      </a>
+      <ul class="nav dropdown-child">
+        <li class="nav-item" onclick="">
+          <a class="nav-link" href="/worker">
+            <div class="nav-op">
+              <i class="fas fa-angle-right"></i>
+              <label>Maintenance staff</label>
+            </div>
+          </a>
+          <a class="nav-link" href="/jobposition">
+            <div class="nav-op">
+              <i class="fas fa-angle-right"></i>
+              <label>Maintenance job position</label>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link dropdown-father" href="#">
+        <div class="nav-op">
+          <i class="fas fa-users-cog"></i>
+          <label>Users</label>
+        </div>
+        <i class="arrow fas fa-chevron-left" aria-hidden="true"></i>
+      </a>
+      <ul class="nav dropdown-child">
+        <li class="nav-item" onclick="">
+          <a class="nav-link" href="/users">
+            <div class="nav-op">
+              <i class="fas fa-angle-right"></i>
+              <label>Maintenance users</label>
+            </div>
+          </a>
+          <a class="nav-link" href="/role">
+            <div class="nav-op">
+              <i class="fas fa-angle-right"></i>
+              <label>Maintenance role</label>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link dropdown-father" href="#">
+        <div class="nav-op">
+          <i class="fas fa-boxes"></i>
+          <label>Product</label>
+        </div>
+        <i class="arrow fas fa-chevron-left" aria-hidden="true"></i>
+      </a>
+      <ul class="nav dropdown-child">
+        <li class="nav-item" onclick="">
+          <a class="nav-link" href="/product">
+            <div class="nav-op">
+              <i class="fas fa-angle-right"></i>
+              <label>Maintenance product</label>
+            </div>
+          </a>
+          <a class="nav-link" href="/producttype">
+            <div class="nav-op">
+              <i class="fas fa-angle-right"></i>
+              <label>Maintenance product type</label>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/purchase-order">
+        <div class="nav-op">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          <label>Purchase order</label>
+        </div>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/inv-receipt">
+        <div class="nav-op">
+          <i class="fas fa-truck-loading"></i>
+          <label>Inventory receipt</label>
+        </div>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/inv-issue">
+        <div class="nav-op">
+          <i class="fas fa-dolly-flatbed"></i>
+          <label>Inventory issue</label>
+        </div>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        <div class="nav-op">
+          <i class="nav-icon fas fa-cash-register" aria-hidden="true"></i>
+          <label>Cash module</label>
+        </div>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/setting">
+        <div class="nav-op">
+          <i class="fa fa-cog" aria-hidden="true"></i>
+          <label>Settings</label>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>
+{{/if}}
