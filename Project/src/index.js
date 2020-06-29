@@ -66,6 +66,8 @@ app.use('/users',require('./routes/users'));
 app.use('/guest',require('./routes/guest'));
 app.use('/booked-room',require('./routes/booked-room'));
 app.use(require('./routes/auth'))
+app.use(require('./routes/home'))
+
 
 //Public
 app.use(express.static(path.join(__dirname,'public')));

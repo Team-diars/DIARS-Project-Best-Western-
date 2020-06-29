@@ -2,7 +2,7 @@ const express=require('express');
 const router=express.Router();
 const {islogedin,isnotlogedin} = require('../lib/out');
 
-router.get('/', isnotlogedin, (req,res)=>{
+router.get('/', (req,res)=>{
     res.render('index');
     // res.send('HOME')
 });

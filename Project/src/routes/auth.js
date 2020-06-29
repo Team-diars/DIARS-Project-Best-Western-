@@ -11,7 +11,7 @@ router.get('/signin', islogedin, async (req, res) => {
 
 router.post('/signin', islogedin, (req,res,next)=>{
     passport.authenticate('local.signin',{
-        successRedirect: '/',
+        successRedirect: '/home',
         failureRedirect: '/signin',
         failureFlash: true
     })(req,res,next);
