@@ -1,19 +1,20 @@
 const express = require('express');
 const router = express.Router();
+const {islogedin,isnotlogedin} = require('../lib/out');
 
 const pool = require('../database');
 
 //Listar ptype
-router.get('/', async (req, res) => {
+router.get('/', isnotlogedin, async (req, res) => {
     const tprod = await pool.query('select * from producttype where status!=0');
     res.render('producttype/list', { tprod: tprod });
 });
 
 //Añadir ptype
-router.get('/add', (req, res) => {
+router.get('/add', isnotlogedin,  async (req, res) => {
     res.render('producttype/add');
 });
-router.post('/add', async (req, res) => {
+router.post('/add', isnotlogedin, async (req, res) => {
     const { name, description } = req.body;
     const newptype = {
         name,
@@ -32,12 +33,12 @@ router.post('/add', async (req, res) => {
 });
 
 //Editar Ptype
-router.get('/edit/:ptype_id', async (req, res) => {
+router.get('/edit/:ptype_id', isnotlogedin, async (req, res) => {
     const { ptype_id } = req.params;
     const ptype = await pool.query('select * from producttype where ptype_id=?', [ptype_id]);
     res.render('producttype/edit', { ptype: ptype[0] });
 });
-router.post('/edit/:ptype_id', async (req, res) => {
+router.post('/edit/:ptype_id', isnotlogedin, async (req, res) => {
     const { ptype_id } = req.params;
     const { name, description } = req.body;
     const newptype = {
@@ -57,14 +58,14 @@ router.post('/edit/:ptype_id', async (req, res) => {
 });
 
 //View Ptype
-router.get('/view/:ptype_id', async (req, res) => {
+router.get('/view/:ptype_id', isnotlogedin, async (req, res) => {
     const { ptype_id } = req.params;
     const ptype = await pool.query('select * from producttype where ptype_id=?', [ptype_id]);
     res.render('producttype/view', { ptype: ptype[0] });
 });
 
 //Eliminar Ptype
-router.get('/delete/:ptype_id', async (req, res) => {
+router.get('/delete/:ptype_id', isnotlogedin, async (req, res) => {
     const { ptype_id } = req.params;
     await pool.query('update producttype set status=0 where ptype_id=?', [ptype_id], (err, resp, fields) => {
         if (err) {

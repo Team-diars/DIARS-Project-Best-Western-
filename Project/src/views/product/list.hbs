@@ -14,8 +14,8 @@
                             <i class="fa fa-plus mr-1" aria-hidden="true"></i>Add
                         </a>
                     </div>
-                    <div class="row mx-auto mt-2">
-                        <input class="form-control" type="text" placeholder="Filter by any attribute">
+                    <div class="form-group row mx-auto mt-2">
+                        <input class="form-control" type="text" placeholder="Filter by any attribute" id="searchbar">
                     </div>
                     <div class="row mx-auto mt-2">
                         <table class="table">
@@ -30,8 +30,7 @@
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
-
+                            <tbody id="table">
                                 {{#each product}}
                                 <tr>
                                     <th scope="row">{{index @index }}</th>
@@ -69,3 +68,21 @@
         </div>
     </div>
 </div>
+<script>
+    const searchbar = document.getElementById('searchbar');
+    searchbar.addEventListener('keyup',()=>{
+        const term = searchbar.value.toLowerCase();
+        const table = document.getElementById('table');
+        const rows = table.getElementsByTagName('tr');
+        Array.from(rows).forEach((rows)=>{
+            const id = rows.children[1].textContent;
+            const name = rows.children[2].textContent;
+            const type = rows.children[3].textContent;
+            if(id.toLowerCase().indexOf(term)!=-1 || name.toLowerCase().indexOf(term)!=-1 || type.toLowerCase().indexOf(term)!=-1){
+                rows.style.display='table-row';
+            }else{
+                rows.style.display='none';
+            }
+        });
+    })
+</script>

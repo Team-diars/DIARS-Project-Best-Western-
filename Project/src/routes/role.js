@@ -1,22 +1,23 @@
 const express = require('express');
 const router = express.Router();
+const {islogedin,isnotlogedin} = require('../lib/out');
 
 const pool = require('../database');
 const { query } = require('express');
 const { executablePath } = require('puppeteer');
 
 //Mostrar roles
-router.get('/', async (req, res) => {
+router.get('/', isnotlogedin, async (req, res) => {
     const role = await pool.query('select * from role where status!=0;');
     console.log(role);
     res.render('role/list', { role: role });
 });
 
 //Añadir
-router.get('/add', (req, res) => {
+router.get('/add', isnotlogedin, async (req, res) => {
     res.render('role/add');
 });
-router.post('/add', async (req, res) => {
+router.post('/add', isnotlogedin, async (req, res) => {
     const newrole = {
         role: req.body.role,
         room: req.body.room ? true : false,
@@ -47,12 +48,12 @@ router.post('/add', async (req, res) => {
 });
 
 //Editar
-router.get('/edit/:role_id', async (req, res) => {
+router.get('/edit/:role_id', isnotlogedin, async (req, res) => {
     const { role_id } = req.params;
     const role = await pool.query('select * from role where role_id=?', [role_id]);
     res.render('role/edit', { role: role[0] });
 });
-router.post('/edit/:role_id', async (req, res) => {
+router.post('/edit/:role_id', isnotlogedin, async (req, res) => {
     const { role_id } = req.params;
     const newrole = {
         role: req.body.role,
@@ -82,14 +83,14 @@ router.post('/edit/:role_id', async (req, res) => {
 });
 
 //Consultar role
-router.get('/view/:role_id', async (req, res) => {
+router.get('/view/:role_id', isnotlogedin, async (req, res) => {
     const { role_id } = req.params;
     const role = await pool.query('select * from role where role_id=?', [role_id]);
     res.render('role/view', { role: role[0] });
 });
 
 //Eliminar role
-router.get('/delete/:role_id', async (req, res) => {
+router.get('/delete/:role_id', isnotlogedin, async (req, res) => {
     const { role_id } = req.params;
     await pool.query('update role set status=0 where role_id=?', [role_id], (err, resp, fields) => {
         if (err) {

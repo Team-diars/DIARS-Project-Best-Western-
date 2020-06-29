@@ -1,3 +1,5 @@
+
+{{#if user}}
 <div id="bar-nav" class="nav-body inactive-nav">
   <ul class="nav vertical-nav">
     <li class="nav-item">
@@ -34,23 +36,17 @@
         <i class="arrow fas fa-chevron-left" aria-hidden="true"></i>
       </a>
       <ul class="nav dropdown-child">
-        <li class="nav-item" onclick="">
-          <a class="nav-link" href="#">
-            <div class="nav-op">
-              <i class="fas fa-angle-right"></i>
-              <label>Reservations</label>
-            </div>
-          </a>
-          <a class="nav-link" href="#">
+        <li class="nav-item" onclick="/booking">
+          <a class="nav-link" href="">
             <div class="nav-op">
               <i class="fas fa-angle-right"></i>
               <label>Booking</label>
             </div>
           </a>
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/booked-room">
             <div class="nav-op">
               <i class="fas fa-angle-right"></i>
-              <label>Rooms booked</label>
+              <label>Booked rooms</label>
             </div>
           </a>
         </li>
@@ -181,3 +177,4 @@
     </li>
   </ul>
 </div>
+{{/if}}

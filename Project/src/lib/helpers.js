@@ -1,4 +1,6 @@
 const moment=require('moment');
+const numeral=require('numeral');
+const bcrypt=require('bcryptjs');
 const helpers = {};
 
 helpers.index = (index) => {
@@ -37,7 +39,38 @@ helpers.formatday=(time)=>{
 }
 
 helpers.momentnow=()=>{
-  return moment().format('L');
+  return moment().format("YYYY-MM-DD");
 }
+
+helpers.floor=(n)=>{
+  var number=numeral(n);
+  return number.format('0o');
+}
+
+helpers.money=(n)=>{
+  var number=numeral(n);
+  return number.format('0,0.00 $');
+}
+
+helpers.encryptpassword = async(password)=>{
+  const salt = await bcrypt.genSalt(10);
+  const hash =await bcrypt.hash(password,salt);
+  return hash;
+};
+
+helpers.decryptpassword = async(password)=>{
+  const salt = await bcrypt.genSalt(10);
+  const hash = bcrypt.decodeBase64(password)
+  /* const hash =await bcrypt.hash(password,salt); */
+  return hash;
+};
+
+helpers.matchpassword = async(password,savedpassword)=>{
+  try {
+      return await bcrypt.compare(password,savedpassword);    
+  } catch (error) {
+    return false;
+  }
+};
 
 module.exports = helpers;

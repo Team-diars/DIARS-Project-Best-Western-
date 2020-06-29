@@ -14,8 +14,8 @@
                             <i class="fa fa-plus mr-1" aria-hidden="true"></i>Add
                         </a>
                     </div>
-                    <div class="row mx-auto mt-2">
-                        <input class="form-control" type="text" placeholder="Filter by any attribute">
+                    <div class="form-group row mx-auto mt-2">
+                        <input class="form-control" type="number" id="searchbar" placeholder="Filter by room number">
                     </div>
                     <div class="row mx-auto mt-2">
                         <table class="table">
@@ -30,14 +30,14 @@
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="table">
                                 {{#each room}}
                                 <tr>
                                     <th scope="row">{{index @index }}</th>
                                     <td>{{number}}</td>
-                                    <td>{{floor}}</td>
+                                    <td>{{floor floor}}</td>
                                     <td>{{roomtype}}</td>
-                                    <td>{{price}}</td>
+                                    <td>{{money price}}</td>
                                     <td>{{room_status status}}</td>
                                     <td>
                                         <a href="room/view/{{room_id}}">
@@ -68,3 +68,19 @@
         </div>
     </div>
 </div>
+<script>
+    const searchbar = document.getElementById('searchbar');
+    searchbar.addEventListener('keyup',()=>{
+        const term = searchbar.value.toLowerCase();
+        const table = document.getElementById('table');
+        const rows = table.getElementsByTagName('tr');
+        Array.from(rows).forEach((rows)=>{
+            const name = rows.children[1].textContent;
+            if(name.toLowerCase().indexOf(term)!=-1){
+                rows.style.display='table-row';
+            }else{
+                rows.style.display='none';
+            }
+        });
+    })
+</script>

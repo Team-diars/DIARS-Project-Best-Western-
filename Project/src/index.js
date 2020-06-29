@@ -45,7 +45,7 @@ app.use((req, res, next)=>{
     app.locals.success=req.flash('success');
     app.locals.success_delete=req.flash('success_delete');
     app.locals.failure=req.flash('failure');
-    /* app.locals.user = req.user; */
+    app.locals.user = req.user;
     next();
 });
 
@@ -64,6 +64,8 @@ app.use('/inv-issue',require('./routes/inv-issue'));
 app.use('/role',require('./routes/role'));
 app.use('/users',require('./routes/users'));
 app.use('/guest',require('./routes/guest'));
+app.use('/booked-room',require('./routes/booked-room'));
+app.use(require('./routes/auth'))
 
 //Public
 app.use(express.static(path.join(__dirname,'public')));
