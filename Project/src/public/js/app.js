@@ -76,7 +76,7 @@ try {
                 }
             });
         }
-    }); 
+    });
 } catch (error) {
 }
 
@@ -110,51 +110,18 @@ try {
 } catch (error) {
 }
 
-//Dialog worker
-try {
-    const btn_finder = document.getElementById('btn-find');
-    btn_finder.addEventListener('click',()=>{
-        document.getElementById('overlay-2').style.display="flex";
-    });
-} catch (error) {
-}
-
-try {
-    const close_fnd = document.getElementById('close-fnd');
-    close_fnd.addEventListener('click', () => {
-        document.getElementById("overlay-2").style.display="none";
-    })
-} catch (error) {
-}
-
-//Set worker-add user
-try {
-    const table = document.getElementById('table-worker');
-    const row=table.getElementsByTagName('tr');
-    const btnworker=table.getElementsByClassName('btnworker');
-    for(var i = 0 ; i < btnworker.length ; i++ ){
-        btnworker[i].addEventListener('click',()=>{
-            const cell=row[i].getElementsByTagName('td');
-            document.getElementById('worker_id').value=cell[0].innerHTML;
-            document.getElementById('name').value=cell[2].innerHTML;
-            document.getElementById("overlay-2").style.display="none";
-            document.getElementById('name').parentNode.classList.add('placeholder-active');
-        }); 
-    }
-} catch (error) {
-} 
-
 //View password
 try {
-    document.getElementById('password').addEventListener('mousedown',()=>{
+    document.getElementById('password').addEventListener('mousedown', () => {
         var x = document.getElementById("inp-password");
-      if (x.type === "password") {
-        x.type = "text";
-        document.getElementById('password').parentNode.classList.add('active-ph');
-      } else {
-        x.type = "password";
-        document.getElementById('password').parentNode.classList.remove('active-ph');
-      }
+        if (x.type === "password") {
+            x.type = "text";
+            document.getElementById('password').parentNode.classList.add('active-ph');
+        } else {
+            x.type = "password";
+            document.getElementById('password').parentNode.classList.remove('active-ph');
+        }
     })
 } catch (error) {
 }
+

@@ -1,4 +1,4 @@
-<div class="container container-resp">
+<div class="container container-resp p-4">
     <div class="card text-center">
         <div class="card-body">
             <div class="form-header pl-5">
@@ -17,23 +17,23 @@
                 </div>
                 <div class="marginRow">
                     <div class="form-group col d-flex justify-content-center">
-                        <input class="form-control" type="text" name="name" autocomplete="off" value="{{setting.name}}" required>
+                        <input class="form-control" type="text" name="name" autocomplete="nope" value="{{setting.name}}" required>
                         <label class="placeholder">Name</label>
                     </div>
                     <div class="form-group col d-flex justify-content-center">
-                        <input class="form-control" type="text" name="TIN" value="{{setting.TIN}}" autocomplete="off" required>
+                        <input class="form-control" type="text" name="TIN" value="{{setting.TIN}}" autocomplete="nope" required>
                         <label class="placeholder">TIN</label>
                     </div>
                 </div>
                 <div class="marginRow">
                     <div class="form-group col d-flex justify-content-center">
-                        <select class="form-control" size="1" name="state" id="select-state" autocomplete="off" required>
+                        <select class="form-control" size="1" name="state" id="select-state" required>
                             <option value="{{setting.state}}" hidden>{{setting.state}}</option>
                         </select>
                         <label class="placeholder">State</label>
                     </div>
                     <div class="form-group col d-flex justify-content-center">
-                        <select class="form-control" size="1" name="city" id="select-city" autocomplete="off" required>
+                        <select class="form-control" size="1" name="city" id="select-city" required>
                             <option value="{{setting.city}}" hidden>{{setting.city}}</option>
                         </select>
                         <label class="placeholder">City</label>
@@ -41,21 +41,21 @@
                 </div>
                 <div class="marginRow">
                     <div class="form-group col d-flex justify-content-center">
-                        <input class="form-control" type="text" name="address" value="{{setting.address}}" autocomplete="off" required>
+                        <input class="form-control" type="text" name="address" value="{{setting.address}}" autocomplete="nope" required>
                         <label class="placeholder">Address</label>
                     </div>
                     <div class="form-group col d-flex justify-content-center">
-                        <input class="form-control" type="text" name="zipcode" value="{{setting.zipcode}}" autocomplete="off" required>
+                        <input class="form-control" type="text" name="zipcode" value="{{setting.zipcode}}" autocomplete="nope" required>
                         <label class="placeholder">Zip code</label>
                     </div>
                 </div>
                 <div class="marginRow">
                     <div class="form-group col d-flex justify-content-center">
-                        <input class="form-control" type="text" name="phone" value="{{setting.phone}}" autocomplete="off" required>
+                        <input class="form-control" type="text" name="phone" value="{{setting.phone}}" autocomplete="nope" required>
                         <label class="placeholder">Phone</label>
                     </div>
                     <div class="form-group col d-flex justify-content-center">
-                        <input class="form-control" type="text" name="email" value="{{setting.email}}" autocomplete="off" required>
+                        <input class="form-control" type="email" name="email" value="{{setting.email}}" autocomplete="nope" required>
                         <label class="placeholder">E-mail</label>
                     </div>
                 </div>

@@ -6,16 +6,19 @@ const pool = require('../database');
 
 /*Mostrar huespedes*/
 router.get('/', isnotlogedin, async (req, res) => {
-    const guest = await pool.query('select * from huesped where status=1');
-    res.render('guest/list', { guest: guest });
+    const book = await pool.query("SELECT `booked`.`booked_cod`, `huesped`.`firstname`, `huesped`.`lastname`, `room`.`number`, `booked`.`datein`, `booked`.`dateout`, `booked`.`total`, `booked`.`status` FROM `booked` LEFT JOIN `huesped` ON `booked`.`guest_id` = `huesped`.`guest_id` LEFT JOIN `room` ON `booked`.`room_id` = `room`.`room_id`");
+    res.render('booked-room/list',{ book:book });
 });
 
-/*Añadir huespedes*/
-router.get('/add', isnotlogedin, (req, res) => {
-    res.render('guest/add');
+/*Añadir book room*/
+router.get('/add', isnotlogedin, async (req, res) => {
+    const guest = await pool.query("select * from huesped ");
+    const room = await pool.query("SELECT `room`.`room_id`, `room`.`number`, `t_room`.`roomtype`, `t_room`.`price`, `t_room`.`bedtype`, `t_room`.`nbeds`, `t_room`.`capacity`, `room`.`floor` FROM `room` LEFT JOIN `t_room` ON `room`.`roomtype` = `t_room`.`troom_id` WHERE `room`.`status` = '1'");
+    const troom = await pool.query("select * from t_room where status=1");
+    res.render('booked-room/add',{ guest:guest,room:room,troom:troom });
 });
-router.post('/add', async (req, res) => {
-    const { firstname, lastname, doctype, docnumber, state, city, address, email, phone, cellphone } = req.body;
+router.post('/add', isnotlogedin, async (req, res) => {
+    const { booked_cod, guest_id, room_id, datein, dateout, pricebook } = req.body;
     const newguest = {
         firstname,
         lastname,

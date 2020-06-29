@@ -1,5 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
+const localstrategy = require('passport-local').Strategy;
+const helpers = require('../lib/helpers');
+const {islogedin,isnotlogedin} = require('../lib/out');
+
 
 const pool = require('../database');
 
@@ -36,13 +41,14 @@ router.post('/add', async (req, res) => {
 });
 
 //Edit user
-router.get('/edit/:worker_id', async (req, res) => {
+router.get('/edit/:worker_id', isnotlogedin, async (req, res) => {
     const { worker_id } = req.params;
     const role = await pool.query('select * from role');
     const user = await pool.query("SELECT `worker`.`worker_id`, `worker`.`name`, `worker`.`lastname`, `worker`.`datereg`, `worker`.`username`, `worker`.`password`, `role`.`role_id`, `role`.`role` FROM `worker` LEFT JOIN `role` ON `worker`.`role` = `role`.`role_id` WHERE `worker`.`worker_id` = ?", [worker_id]);
     res.render('users/edit', { role: role, user: user[0] });
 });
-router.post('/edit/:worker_id', async (req, res) => {
+
+router.post('/edit/:worker_id', isnotlogedin, async (req, res) => {
     const { worker_id } = req.params;
     const { username, password, role } = req.body;
     const newuser = {
@@ -63,14 +69,14 @@ router.post('/edit/:worker_id', async (req, res) => {
 });
 
 //View user
-router.get('/view/:worker_id', async (req, res) => {
+router.get('/view/:worker_id', isnotlogedin, async (req, res) => {
     const { worker_id } = req.params;
     const user = await pool.query("SELECT `worker`.`worker_id`, `worker`.`name`, `worker`.`lastname`, `worker`.`datereg`, `worker`.`username`, `worker`.`password`, `role`.`role_id`, `role`.`role` FROM `worker` LEFT JOIN `role` ON `worker`.`role` = `role`.`role_id` WHERE `worker`.`worker_id` = ?", [worker_id]);
     res.render('users/view', { user: user[0] });
 });
 
 //Delete user
-router.get('/delete/:worker_id', async (req, res) => {
+router.get('/delete/:worker_id', isnotlogedin, async (req, res) => {
     const { worker_id } = req.params;
     await pool.query('update worker set account=0 where worker_id=?', [worker_id], (err, resp, fields) => {
         if (err) {

@@ -1,20 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../database');
+const {islogedin,isnotlogedin} = require('../lib/out');
 
 //Lista room
-router.get('/', async (req, res) => {
+router.get('/', isnotlogedin, async (req, res) => {
     const room = await pool.query("SELECT room.room_id, room.number, room.floor, t_room.roomtype, t_room.price, room.status FROM room LEFT JOIN t_room ON room.roomtype = t_room.troom_id WHERE room.status != 0");
     res.render('room/list', { room: room });
 });
 
 //Añadir room
-router.get('/add', async (req, res) => {
+router.get('/add', isnotlogedin, async (req, res) => {
     const rtype = await pool.query('select * from t_room where status=1');
     res.render('room/add', { rtype: rtype });
 });
 
-router.post('/add', async (req, res) => {
+router.post('/add', isnotlogedin, async (req, res) => {
     const { number, floor, roomtype } = req.body;
     const newroom = {
         number,
@@ -35,13 +36,13 @@ router.post('/add', async (req, res) => {
 });
 
 //Editar room
-router.get('/edit/:room_id', async (req, res) => {
+router.get('/edit/:room_id', isnotlogedin, async (req, res) => {
     const { room_id } = req.params;
     const rtype = await pool.query('select * from t_room where status=1');
     const room = await pool.query("SELECT room.room_id, room.number, t_room.roomtype, room.floor, room.status, t_room.troom_id FROM room LEFT JOIN t_room ON room.roomtype = t_room.troom_id WHERE room.room_id = ?", [room_id]);
     res.render('room/edit', { room: room[0], rtype: rtype });
 });
-router.post('/edit/:room_id', async (req, res) => {
+router.post('/edit/:room_id', isnotlogedin, async (req, res) => {
     const { room_id } = req.params;
     const { number, floor, roomtype } = req.body;
     const newroom = {
@@ -62,14 +63,14 @@ router.post('/edit/:room_id', async (req, res) => {
 });
 
 //Consultar room
-router.get('/view/:room_id', async (req, res) => {
+router.get('/view/:room_id', isnotlogedin, async (req, res) => {
     const { room_id } = req.params;
     const room = await pool.query("SELECT room.room_id, room.number, t_room.roomtype, room.floor, room.status, t_room.troom_id FROM room LEFT JOIN t_room ON room.roomtype = t_room.troom_id WHERE room.room_id = ?", [room_id]);
     res.render('room/view', { room: room[0] });
 });
 
 //Eliminar room 
-router.get('/delete/:room_id', async (req, res) => {
+router.get('/delete/:room_id', isnotlogedin, async (req, res) => {
     const { room_id } = req.params;
     await pool.query('update room set status=0 where room_id=?', [room_id], (err, resp, fields) => {
         if (err) {

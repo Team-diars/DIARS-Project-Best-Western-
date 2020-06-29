@@ -1,0 +1,328 @@
+<div id="overlay-guest" class="overlay" style="display: none;">
+    <div class="finder">
+        <div class="head">
+            <div class="head-body">
+                Find guest
+            </div>
+            <div class="button close-fnd" id="close-guest">
+                <span aria-hidden="true">&times;</span>
+            </div>
+        </div>
+        <div class="body">
+            <div class="input-finder form-group mb-4">
+                <input type="text" class="form-control" placeholder="Find by name" id="searchbarguest">
+            </div>
+            <div class="table-fixed">
+                <table class="table table-hover text-center" id="table-guest">
+                    <thead>
+                        <th>#</th>
+                        <th hidden></th>
+                        <th>Full name</th>
+                        <th>Doc type</th>
+                        <th>Doc number</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody id="table">
+                        {{#each guest}}
+                        <tr>
+                            <th scope="row">{{index @index }}</th>
+                            <td hidden>{{guest_id}}</td>
+                            <td>{{firstname}} {{lastname}}</td>
+                            <td>{{doctype}}</td>
+                            <td>{{docnumber}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary btnguest">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="overlay-room" class="overlay" style="display: none;">
+    <div class="finder">
+        <div class="head">
+            <div class="head-body">
+                Find room
+            </div>
+            <div class="button close-fnd" id="close-room">
+                <span aria-hidden="true">&times;</span>
+            </div>
+        </div>
+        <div class="body">
+            <div class="input-finder form-group mb-4">
+                <input type="text" class="form-control" placeholder="Find by name" id="searchbartroom">
+                <select class="form-control" size="1" name="roomtype" id="searchbarstroom">
+                    <option value="" hidden>Select a type</option>
+                    {{#each troom}}
+                    <option value="{{roomtype}}">{{roomtype}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="table-fixed">
+                <table class="table table-hover text-center" id="table-room">
+                    <thead>
+                        <th>#</th>
+                        <th hidden></th>
+                        <th>Room number</th>
+                        <th>Room type</th>
+                        <th>Price</th>
+                        <th>Bed type</th>
+                        <th>N° bed</th>
+                        <th>Capacity</th>
+                        <th>Floor</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody id="table-troom">
+                        {{#each room}}
+                        <tr>
+                            <th scope="row">{{index @index }}</th>
+                            <td hidden>{{room_id}}</td>
+                            <td>{{number}}</td>
+                            <td>{{roomtype}}</td>
+                            <td>{{price}}</td>
+                            <td>{{bedtype}}</td>
+                            <td>{{nbeds}}</td>
+                            <td>{{capacity}}</td>
+                            <td>{{floor floor}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary btnroom">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container container-resp">
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-header pl-5">
+                <div class="form-header-title">
+                    <div>
+                        <i class="fa fa-book m-2" aria-hidden="true" style="font-size: 20px;"></i>
+                    </div>
+                    <h3 class="title">Book room</h3>
+                </div>
+            </div>
+            <form class="form-body" action="/guest/add" method="POST">
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="booked_cod" autocomplete="off" required>
+                        <label class="placeholder">Book id</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" id="guest_id" name="guest_id" hidden>
+                        <input class="form-control" type="text" id="nameguest" name="firstname" autocomplete="off"
+                            readonly required>
+                        <label class="placeholder">Guest</label>
+                        <button type="button" class="btn btn-secondary" id="btn-guest">Find</button>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" id="room_id" name="room_id" hidden>
+                        <input class="form-control" type="number" id="priceroom" name="priceroom" hidden>
+                        <input class="form-control" type="text" id="roomn" name="room" autocomplete="off" readonly
+                            required>
+                        <label class="placeholder">Room</label>
+                        <button type="button" class="btn btn-secondary" id="btn-room">Find</button>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="cant" autocomplete="off">
+                        <label class="placeholder">Number of guest</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" id="datein" name="datein" autocomplete="off">
+                        <label class="placeholder">Check in</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" id="dateout" name="dateout" autocomplete="off">
+                        <label class="placeholder">Check out</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" id="pricebook" name="total" readonly>
+                        <label class="placeholder">Price</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <a class="btn btn-danger btn-block" href="/guest">Cancel</a>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input type="submit" class="btn btn-primary btn-block" value="Accept">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    //Filters
+    const searchbarguest = document.getElementById('searchbarguest');
+    searchbarguest.addEventListener('keyup', () => {
+        const term = searchbarguest.value.toLowerCase();
+        const table = document.getElementById('table');
+        const rows = table.getElementsByTagName('tr');
+        Array.from(rows).forEach((rows) => {
+            const code = rows.children[2].textContent;
+            const name = rows.children[4].textContent;
+            if (code.toLowerCase().indexOf(term) != -1 || name.toLowerCase().indexOf(term) != -1) {
+                rows.style.display = 'table-row';
+            } else {
+                rows.style.display = 'none';
+            }
+        });
+    })
+    const searchbarstroom = document.getElementById('searchbarstroom');
+    searchbarstroom.addEventListener('input', () => {
+        const term = searchbarstroom.value.toLowerCase();
+        const table = document.getElementById('table-troom');
+        const rows = table.getElementsByTagName('tr');
+        Array.from(rows).forEach((rows) => {
+            const troom = rows.children[3].textContent;
+            if (troom.toLowerCase().indexOf(term) != -1) {
+                rows.style.display = 'table-row';
+            } else {
+                rows.style.display = 'none';
+            }
+        });
+    })
+
+    const searchbartroom = document.getElementById('searchbartroom');
+    searchbartroom.addEventListener('input', () => {
+        const term = searchbartroom.value.toLowerCase();
+        const table = document.getElementById('table-troom');
+        const rows = table.getElementsByTagName('tr');
+        Array.from(rows).forEach((rows) => {
+            const rnumber = rows.children[2].textContent;
+            const price = rows.children[4].textContent;
+            const floor = rows.children[8].textContent;
+            if (rnumber.toLowerCase().indexOf(term) != -1 || price.toLowerCase().indexOf(term) != -1 || floor.toLowerCase().indexOf(term) != -1) {
+                rows.style.display = 'table-row';
+            } else {
+                rows.style.display = 'none';
+            }
+        });
+    })
+
+    //Dialog button
+    try {
+        const btn_finder = document.getElementById('btn-guest');
+        btn_finder.addEventListener('click', () => {
+            document.getElementById('overlay-guest').style.display = "flex";
+            alert(document.getElementById('dateout').value);
+        });
+    } catch (error) {
+    }
+    try {
+        const btn_finder = document.getElementById('btn-room');
+        btn_finder.addEventListener('click', () => {
+            document.getElementById('overlay-room').style.display = "flex";
+        });
+    } catch (error) {
+    }
+    //Close button
+    try {
+        const close_fnd = document.getElementById('close-guest');
+        close_fnd.addEventListener('click', () => {
+            document.getElementById("overlay-guest").style.display = "none";
+        })
+    } catch (error) {
+    }
+    try {
+        const close_fnd = document.getElementById('close-room');
+        close_fnd.addEventListener('click', () => {
+            document.getElementById("overlay-room").style.display = "none";
+        })
+    } catch (error) {
+    }
+
+    //
+    try {
+        document.getElementById('datein').addEventListener('focus', () => {
+            document.getElementById('datein').type = "date";
+        });
+        document.getElementById('dateout').addEventListener('focus', () => {
+            document.getElementById('dateout').type = "date";
+        });
+        document.getElementById('datein').addEventListener('blur', () => {
+            if (document.getElementById('datein').value==="") {
+                document.getElementById('datein').type = "text";
+            }
+
+        });
+        document.getElementById('dateout').addEventListener('blur', () => {
+            if (document.getElementById('dateout').value==="") {
+                document.getElementById('dateout').type = "text";
+            }
+        });
+    } catch (error) {
+    }
+    //Set book-add guest
+    try {
+        $("#table-guest tbody tr button").click(function () {
+            var row = $(this).closest("tr");
+            document.getElementById('guest_id').value = row.find("td:eq(0)").text();
+            document.getElementById('nameguest').value = row.find("td:eq(1)").text();
+            document.getElementById("overlay-guest").style.display = "none";
+            document.getElementById('nameguest').parentNode.classList.add('placeholder-active');
+        });
+    } catch (error) {
+    }
+    //Set book-add room
+    try {
+        $("#table-room tbody tr button").click(function () {
+            var row = $(this).closest("tr");
+            document.getElementById('room_id').value = row.find("td:eq(0)").text();
+            document.getElementById('priceroom').value = row.find("td:eq(3)").text();
+            document.getElementById('roomn').value = row.find("td:eq(1)").text();
+            document.getElementById("overlay-room").style.display = "none";
+            document.getElementById('roomn').parentNode.classList.add('placeholder-active');
+        });
+    } catch (error) {
+    }
+
+    //
+    document.getElementById("pricebook").addEventListener
+
+    $(function () {
+        $('#datein').datepicker({
+            numberOfMonths: 1,
+            dateFormat: 'mm/dd/yy',
+            onSelect: function (selectdate) {
+                var dt = new Date(selectdate);
+                dt.setDate(dt.getDate() + 1)
+                $('#dateout').datepicker("option", "minDate", dt);
+                document.getElementById('datein').parentNode.classList.add('placeholder-active');
+            }
+        });
+        $('#dateout').datepicker({
+            numberOfMonths: 1,
+            dateFormat: 'mm/dd/yy',
+            onSelect: function (selectdate) {
+                var dt = new Date(selectdate);
+                dt.setDate(dt.getDate() - 1)
+                $('#datein').datepicker("option", "maxDate", dt);
+                document.getElementById('dateout').parentNode.classList.add('placeholder-active');
+            }
+        });
+    });
+</script>

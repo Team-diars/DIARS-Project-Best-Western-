@@ -1,20 +1,21 @@
 const express = require('express');
 const router = express.Router();
+const {islogedin,isnotlogedin} = require('../lib/out');
 
 const pool = require('../database');
 
 //Listar product
-router.get('/', async (req, res) => {
+router.get('/', isnotlogedin, async (req, res) => {
     const product = await pool.query("SELECT `product`.`product_id`, `product`.`product_code`, `product`.`name`, `producttype`.`name` as ptypename, `product`.`current_stock`, `product`.`critical_stock` FROM `product` LEFT JOIN `producttype` ON `product`.`ptype` = `producttype`.`ptype_id` WHERE `product`.`status` != '0'");
     res.render('product/list', { product: product });
 });
 
 //Añadir product
-router.get('/add', async (req, res) => {
+router.get('/add', isnotlogedin, async (req, res) => {
     const ptype = await pool.query('select * from producttype where status=1');
     res.render('product/add', { ptype: ptype });
 });
-router.post('/add', async (req, res) => {
+router.post('/add', isnotlogedin, async (req, res) => {
     const { product_code, name, critical_stock, ptype } = req.body;
     const newproduct = {
         product_code,
@@ -35,13 +36,13 @@ router.post('/add', async (req, res) => {
 });
 
 //Editar product
-router.get('/edit/:product_id', async (req, res) => {
+router.get('/edit/:product_id', isnotlogedin, async (req, res) => {
     const { product_id } = req.params;
     const ptype = await pool.query('select * from producttype where status=1');
     const product = await pool.query("SELECT `product`.`product_id`, `product`.`product_code`, `product`.`name`, `producttype`.`ptype_id`, `producttype`.`name` as `ptypename`, `product`.`current_stock`, `product`.`critical_stock` FROM `product` LEFT JOIN `producttype` ON `product`.`ptype` = `producttype`.`ptype_id` WHERE `product`.`product_id` = ?", [product_id])
     res.render('product/edit', { ptype: ptype, product: product[0] });
 });
-router.post('/edit/:product_id', async (req, res) => {
+router.post('/edit/:product_id', isnotlogedin, async (req, res) => {
     const { product_id } = req.params;
     const { product_code, name, critical_stock, ptype } = req.body;
     const newproduct = {
@@ -63,14 +64,14 @@ router.post('/edit/:product_id', async (req, res) => {
 });
 
 //Consultar product
-router.get('/view/:product_id', async (req, res) => {
+router.get('/view/:product_id', isnotlogedin, async (req, res) => {
     const { product_id } = req.params;
     const product = await pool.query("SELECT `product`.`product_id`, `product`.`product_code`, `product`.`name`, `producttype`.`ptype_id`, `producttype`.`name` as `ptypename`, `product`.`current_stock`, `product`.`critical_stock` FROM `product` LEFT JOIN `producttype` ON `product`.`ptype` = `producttype`.`ptype_id` WHERE `product`.`product_id` = ?", [product_id])
     res.render('product/view', { product: product[0] });
 });
 
 //Eliminar product
-router.get('/delete/:product_id', async (req, res) => {
+router.get('/delete/:product_id', isnotlogedin, async (req, res) => {
     const { product_id } = req.params;
     await pool.query('update product set status=0 where product_id=?', [product_id], (err, resp, fields) => {
         if (err) {
