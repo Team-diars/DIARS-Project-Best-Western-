@@ -212,11 +212,11 @@
             <div class="form-row">
               <div class="form-group m-2">
                 <label>Full name</label>
-                <input type="text" class="form-control" name="fullname" placeholder="Full name" autofocus>
+                <input name="NombreCompleto" type="text" class="form-control" placeholder="Full name" autofocus>
               </div>
               <div class="form-group m-2">
-                <label for="validationTooltipComboBox">Type</label>
-                <select class="custom-select form-control" name="selec">
+                <label>Type</label>
+                <select name="TipoHabitacion" class="custom-select form-control">
                   <option selected>Select your type</option>
                   <option value="1">Individual</option>
                   <option value="2">Double</option>
@@ -229,19 +229,19 @@
               </div>
               <div class="form-group m-2">
                 <label for="check-in">Check-In</label>
-                <input class="form-control" id="check-in" placeholder="Check-In" required />
+                <input name="FechaInicio" class="form-control" id="check-in" placeholder="Check-In" required />
               </div>
             </div>
             {{!-- SECOND ROW --}}
             <div class="form-row">
               <div class="form-group m-2">
                 <label>Phone Number</label>
-                <input type="text" class="form-control" placeholder="Phone Number"
+                <input  name="NumeroCelular" type="text" class="form-control" placeholder="Phone Number"
                   required>
               </div>
               <div class="form-group m-2">
-                <label for="validationTooltipPeople">People</label>
-                <select class="custom-select form-control" required>
+                <label>People</label>
+                <select name="CantPersonas" class="custom-select form-control" required>
                   <option selected>Select Quantity</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
@@ -252,7 +252,7 @@
               </div>
               <div class="form-group m-2">
                 <label for="check-out">Check-Out</label>
-                <input class="form-control" id="check-out" placeholder="Check-Out" required/>
+                <input name="FechaSalida" class="form-control" id="check-out" placeholder="Check-Out" required/>
               </div>
             </div>
             <div class="form-group">
