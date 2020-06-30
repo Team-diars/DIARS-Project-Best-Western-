@@ -46,7 +46,10 @@ helpers.momenttomorrow=()=>{
 }
 
 helpers.formatdb=(time)=>{
-  return moment(time).format('YYYY-MM-DD');
+  //!FIXING BUG Deprecation warning: value provided is not in a recognized RFC2822 or ISO format. moment construction falls back to js Date(), which is not reliable across all browsers and versions. Non RFC2822/ISO date formats are discouraged and will be removed in an upcoming major release. Please refer to http://momentjs.com/guides/#/warnings/js-date/ for more info.
+
+  return moment(time,'DD MMMM YYYY').format('YYYY-MM-DD');
+  // return moment(time,'YYYY-MM-DD');
 }
 
 helpers.floor=(n)=>{
