@@ -322,3 +322,6 @@ insert into  T_habitacion values(1,'PERS','para 1 personas','2','familiar.jpg','
  `FechaSalida` DATE NOT NULL,
  `PrecioTotal` DOUBLE
  );  ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ ALTER TABLE Reserva 
+ MODIFY idRerserva INT NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
