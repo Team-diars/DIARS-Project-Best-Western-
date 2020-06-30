@@ -449,9 +449,7 @@ body {
   .reservation-wrapper .text-boxes {
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    grid-template-rows: 33% 33% 33%;
-    row-gap: 4px;
-    column-gap: 4px; }
+    grid-template-rows: 33% 33% 33%; }
     .reservation-wrapper .text-boxes input {
       text-align: center; }
     .reservation-wrapper .text-boxes .btn-send {
