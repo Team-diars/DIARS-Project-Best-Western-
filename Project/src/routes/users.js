@@ -28,6 +28,7 @@ router.post('/add', async (req, res) => {
         password,
         role
     };
+    newuser.datereg=helpers.formatdb(newuser.datereg);
     await pool.query("update worker set ?,`worker`.`account` = '1' where worker_id= ?", [newuser, worker_id], async (err, resp, fields) => {
         if (err) {
             req.flash('failure', "Could't register user" + err);

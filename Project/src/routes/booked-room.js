@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const {islogedin,isnotlogedin} = require('../lib/out');
+const axios = require('axios');
+const { islogedin, isnotlogedin } = require('../lib/out');
 
 const pool = require('../database');
 
 /*Mostrar huespedes*/
 router.get('/', isnotlogedin, async (req, res) => {
     const book = await pool.query("SELECT `booked`.`booked_cod`, `huesped`.`firstname`, `huesped`.`lastname`, `room`.`number`, `booked`.`datein`, `booked`.`dateout`, `booked`.`total`, `booked`.`status` FROM `booked` LEFT JOIN `huesped` ON `booked`.`guest_id` = `huesped`.`guest_id` LEFT JOIN `room` ON `booked`.`room_id` = `room`.`room_id`");
-    res.render('booked-room/list',{ book:book });
+    res.render('booked-room/list', { book: book });
 });
 
 /*Añadir book room*/
@@ -15,33 +16,36 @@ router.get('/add', isnotlogedin, async (req, res) => {
     const guest = await pool.query("select * from huesped ");
     const room = await pool.query("SELECT `room`.`room_id`, `room`.`number`, `t_room`.`roomtype`, `t_room`.`price`, `t_room`.`bedtype`, `t_room`.`nbeds`, `t_room`.`capacity`, `room`.`floor` FROM `room` LEFT JOIN `t_room` ON `room`.`roomtype` = `t_room`.`troom_id` WHERE `room`.`status` = '1'");
     const troom = await pool.query("select * from t_room where status=1");
-    res.render('booked-room/add',{ guest:guest,room:room,troom:troom });
+    res.render('booked-room/add', { guest: guest, room: room, troom: troom });
 });
 router.post('/add', isnotlogedin, async (req, res) => {
-    const { booked_cod, guest_id, room_id, datein, dateout, pricebook } = req.body;
-    const newguest = {
-        firstname,
-        lastname,
-        doctype,
-        docnumber,
-        state,
-        city,
-        address,
-        email,
-        phone,
-        cellphone,
+    const { booked_cod, guest_id, room_id, datein, dateout, total } = req.body;
+    const newbooked = {
+        booked_cod,
+        guest_id,
+        room_id,
+        datein,
+        dateout,
+        total
     };
-    await pool.query('insert into huesped set ?', [newguest], async (err, resp, fields) => {
+    await pool.query('insert into booked set ?', [newbooked], async (err, resp, fields) => {
         if (err) {
-            req.flash('failure', "Could't register guest" + err);
-            res.redirect('/guest');
+            req.flash('failure', "Could't register book" + err);
+            res.redirect('/booked-room');
         }
         else {
-            req.flash('success', 'Guest successfully registered');
-            res.redirect('/guest');
+            await pool.query('update huesped set status=2 where room_id=?', [newbooked.room_id], async (err, resp, fields) => {
+                if (err) {
+                    req.flash('failure', "Could't register book" + err);
+                    res.redirect('/booked-room');
+                }
+                else {
+                    req.flash('success', 'Book successfully registered');
+                    res.redirect('/booked-room');
+                }
+            });
         }
     });
-    res.redirect('/guest');
 });
 
 /*Editar huespedes*/
