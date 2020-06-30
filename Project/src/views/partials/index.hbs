@@ -1,4 +1,4 @@
-{{!-- <body>
+<body>
   <!-- HOME -->
   <!--Navbar-->
   <header>
@@ -9,11 +9,12 @@
             <img src="img/logo.svg" alt="Logo image">
 
             <ul class="navigation">
-              <li class="item"><a class="enlace active" href="#inicio">Home</a></li>
-              <li class="item"><a class="enlace" href="#nosotros">About</a></li>
-              <li class="item"><a class="enlace" href="#habitaciones">Rooms</a></li>
-              <li class="item"><a class="enlace" href="#servicios">Services</a></li>
-              <li class="item"><a class="enlace" href="#contacto">Contacts</a></li>
+              <li class="home-item"><a class="enlace active" href="#inicio">Home</a></li>
+              <li class="home-item"><a class="enlace" href="#nosotros">About</a></li>
+              <li class="home-item"><a class="enlace" href="#habitaciones">Rooms</a></li>
+              <li class="home-item"><a class="enlace" href="#servicios">Services</a></li>
+              <li class="home-item"><a class="enlace" href="#contacto">Contacts</a></li>
+              <li class="home-item"><a class="enlace" href="/signin">Intranet</a></li>
             </ul>
           </div>
         </div>
@@ -205,22 +206,17 @@
             Tel: +356 2137 8785</p>
           <button class="btn btn-success btn-lg" id="btn-make">Make your reservation</button>
         </div>
+        {{!-- FORMULARIO --}}
         <div class="reservation-wrapper-reservation">
-          <form class="needs-validation" novalidate>
+          <form action="/" method="POST">
             <div class="form-row">
-              <div class="col-md-4 mb-3">
-                <label for="validationTooltipFullName">Full name</label>
-                <input type="text" class="form-control" id="validationTooltipFullName" placeholder="Full name" required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
-                <div class="invalid-feedback">
-                  Please type your Full Name
-                </div>
+              <div class="form-group m-2">
+                <label>Full name</label>
+                <input type="text" class="form-control" name="fullname" placeholder="Full name" autofocus>
               </div>
-              <div class="col-md-4 mb-3">
+              <div class="form-group m-2">
                 <label for="validationTooltipComboBox">Type</label>
-                <select class="custom-select" id="validationTooltipComboBox">
+                <select class="custom-select form-control" name="selec">
                   <option selected>Select your type</option>
                   <option value="1">Individual</option>
                   <option value="2">Double</option>
@@ -230,30 +226,22 @@
                   <option value="5">Queen</option>
                   <option value="6">King</option>
                 </select>
-                <div class="invalid-feedback">
-                  Please select Quantity
-                </div>
               </div>
-              <div class="col-md-4 mb-3">
+              <div class="form-group m-2">
                 <label for="check-in">Check-In</label>
                 <input class="form-control" id="check-in" placeholder="Check-In" required />
               </div>
-              <div class="invalid-feedback">
-                Please choose your Check-In
-              </div>
             </div>
+            {{!-- SECOND ROW --}}
             <div class="form-row">
-              <div class="col-md-4 mb-3">
-                <label for="validationTooltipPhoneNumber">Phone Number</label>
-                <input type="text" class="form-control" id="validationTooltipPhoneNumber" placeholder="Phone Number"
+              <div class="form-group m-2">
+                <label>Phone Number</label>
+                <input type="text" class="form-control" placeholder="Phone Number"
                   required>
-                <div class="invalid-feedback">
-                  Please type your Phone Number
-                </div>
               </div>
-              <div class="col-md-4 mb-3">
+              <div class="form-group m-2">
                 <label for="validationTooltipPeople">People</label>
-                <select class="custom-select" id="validationTooltipPeople" required>
+                <select class="custom-select form-control" required>
                   <option selected>Select Quantity</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
@@ -261,20 +249,16 @@
                   <option value="4">Four</option>
                   <option value="5">Over Four</option>
                 </select>
-                <div class="invalid-feedback">
-                  Please select one option
-                </div>
               </div>
-              <div class="col-md-4 mb-3">
+              <div class="form-group m-2">
                 <label for="check-out">Check-Out</label>
-                <input class="form-control" id="check-out" placeholder="Check-Out" required />
-                <div class="invalid-feedback">
-                  Please select your Check-Out
-                </div>
+                <input class="form-control" id="check-out" placeholder="Check-Out" required/>
               </div>
             </div>
-            <button class="btn btn-secondary btn-lg" id="btn-back">Back</button>
-            <button class="btn btn-success btn-lg" type="submit">Submit</button>
+            <div class="form-group">
+            <button class="btn btn-success btn-lg m-1">Submit</button>
+            <button class="btn btn-secondary btn-lg m-1" id="btn-back">Back</button>
+            </div>
           </form>
         </div>
       </div>
@@ -297,8 +281,6 @@
           $('#check-out').datepicker("option", "minDate", dt);
         }
       });
-
-
       $('#check-out').datepicker({
         numberOfMonths: 1,
         dateFormat: 'DD,d MM,yy',
@@ -340,24 +322,6 @@
       $('.enlace').removeClass('active')
       $(this).addClass('active')
     })
-
-    //todo: Bedrooms animation (zooming photo)
-    // $('div .bedroom-content img').on('mouseenter',function(){
-    //   console.log('aumentando')
-    //   $(this).animate({'width':'100%'},200);
-    // })
-    // $('div .bedroom-content img').on('mouseleave',function(){
-    //   console.log('aumentando')
-    //   $(this).animate({'width':'100%'},200);
-    // })
-
-    //todo: Bedrooms animation (ul tag zooming)
-    // $('.bed-items li').on('mouseenter',function(){
-    //   $(this).animate({'font-size':'18px','left':'0','top':'0'},100).fadeIn(200)
-    // })
-    // $('.bed-items li').on('mouseleave',function(){
-    //   $(this).animate({'font-size':'16px'},100).fadeIn(200)
-    // })
 
     //todo: services animation
     const portfolioItems = document.getElementsByClassName('descrip-servicio')
@@ -407,4 +371,4 @@
       })
     })
   </script>
-</body> --}}
+</body>

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/",
     "dev": "nodemon src/",
-    "scss": "node-sass -w scss -o styles"
+    "scss": "node-sass --watch scss -o src/public/css"
   },
   "keywords": [],
   "author": "",

@@ -9,12 +9,13 @@ const passport=require('passport');
 const {database}=require('./key');
 const puppeteer=require('puppeteer');
 const fs=require('fs');
+const { allowedNodeEnvironmentFlags } = require('process');
 
 //Initializations
 const app=express();
 require('./lib/passport');
 
-//Settigns
+//Settings
 app.set('port',process.env.PORT||4000);
 app.set('view engine','.hbs');
 app.set('views',path.join(__dirname,'views'))
@@ -25,6 +26,8 @@ app.engine('.hbs',exphbs({
     extname: '.hbs',
     helpers: require('./lib/helpers')
 }));
+//*Other 'main' layout for index webpage
+app.set('view options',{layout:'index'})
 
 //Middlewares
 app.use(session({
