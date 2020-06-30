@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const axios = require('axios');
 const { islogedin, isnotlogedin } = require('../lib/out');
 
 const pool = require('../database');
