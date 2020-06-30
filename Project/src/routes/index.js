@@ -2,6 +2,8 @@ const express=require('express');
 const router=express.Router();
 const {islogedin,isnotlogedin} = require('../lib/out');
 const pool = require('../database');
+const helpers = require('../lib/helpers');
+
 
 router.get('/', (req,res)=>{
   //*Aiming to layout dir, index.hbs file
@@ -11,14 +13,16 @@ router.get('/', (req,res)=>{
 
 router.post('/',async (req,res)=>{
   const {id} = req.params;
-  const { NombreCompleto,Email,TipoHabitacion,CantPersonas,NumeroCelular,FechaInicio,FechaSalida } = req.body;
+  const { NombreCompleto,TipoHabitacion,CantPersonas,NumeroCelular,FechaInicio,FechaSalida } = req.body;
+  const validFechaInicio = helpers.formatdb(FechaInicio)
+  const validFechaSalida = helpers.formatdb(FechaSalida)
   const newLink = {
     NombreCompleto,
     TipoHabitacion,
     CantPersonas,
     NumeroCelular,
-    FechaInicio,
-    FechaSalida
+    FechaInicio:validFechaInicio,
+    FechaSalida:validFechaSalida
   }
   console.log(newLink);
   pool.query('INSERT INTO reserva set ?',[newLink])
