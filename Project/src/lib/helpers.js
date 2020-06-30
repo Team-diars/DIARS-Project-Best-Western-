@@ -35,11 +35,18 @@ helpers.checked = (value) => {
 }
 
 helpers.formatday=(time)=>{
-  return moment(time).format('L');
+  return moment(time).format('MM/DD/YYYY');
+}
+helpers.momentnow=()=>{
+  return moment().format("MM/DD/YYYY");
 }
 
-helpers.momentnow=()=>{
-  return moment().format("YYYY-MM-DD");
+helpers.momenttomorrow=()=>{
+  return moment().add(1, 'day').format("MM/DD/YYYY");
+}
+
+helpers.formatdb=(time)=>{
+  return moment(time).format('YYYY-MM-DD');
 }
 
 helpers.floor=(n)=>{
