@@ -314,10 +314,11 @@ insert into  T_habitacion values(1,'PERS','para 1 personas','2','familiar.jpg','
  #tabla flotante de los datos de cada persona en la web
  create table Reserva(
  `idRerserva` INT primary key  NOT NULL,
- `Nombre` VARCHAR(45) not null,
- `ApellidoP` VARCHAR(45),
- `Email` VARCHAR(45),
- `FechaInicio` DATE,
- `FechaSalida` DATE,
+ `NombreCompleto` VARCHAR(100) NOT NULL,
+ `TipoHabitacion` VARCHAR (20) NOT NULL,
+ `CantPersonas` INT NOT NULL,
+ `NumeroCelular` VARCHAR(10) NOT NULL,
+ `FechaInicio` DATE NOT NULL,
+ `FechaSalida` DATE NOT NULL,
  `PrecioTotal` DOUBLE
- )  ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ );  ENGINE=InnoDB DEFAULT CHARSET=latin1;
