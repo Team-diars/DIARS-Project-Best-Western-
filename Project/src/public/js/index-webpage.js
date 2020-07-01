@@ -59,7 +59,7 @@ Object.keys(portfolioItems).forEach(elem => {
     portfolioItems[elem].classList.remove('darken--description');
   })
 })
-
+$('.bedroom-nav a:first').addClass('active-item');
 $('.bedroom-nav a').on('click', function () {
   $('.bedroom-nav a').removeClass('active-item');
   $(this).addClass('active-item');
