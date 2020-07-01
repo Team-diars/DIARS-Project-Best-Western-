@@ -11,7 +11,7 @@ router.get('/', async (req,res)=>{
   
   //*Function to export uppercase method
   Handlebars.registerHelper('upper_rtype',function(str){
-    return str.charAt(0).toUpperCase() + str.slice(1);
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   })
   //*Aiming to layout dir, index.hbs file
   res.render('index',{title:'index page',layout:'index',rtype:TipoHabitacion});
