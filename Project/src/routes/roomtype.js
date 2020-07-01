@@ -1,13 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const {islogedin,isnotlogedin} = require('../lib/out');
-
+const Handlebars = require('handlebars');
 const pool = require('../database');
 
 //Mostrar tipos de room
 router.get('/', isnotlogedin, async (req, res) => {
+    //*Function to export uppercase method within roomtype/list
+    Handlebars.registerHelper('upper_rtype',function(str){
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    })
+
     const troom = await pool.query('select * from t_room where status=1');
-    res.render('roomtype/list', { troom: troom });
+    res.render('roomtype/list', { troom });
 });
 
 //Añadir room type
