@@ -3,13 +3,22 @@ const router=express.Router();
 const {islogedin,isnotlogedin} = require('../lib/out');
 const pool = require('../database');
 const helpers = require('../lib/helpers');
+const Handlebars = require('handlebars');
 
+router.get('/', async (req,res)=>{
 
-router.get('/', (req,res)=>{
+  const TipoHabitacion = await pool.query('SELECT * FROM t_room WHERE status=1');
+  
+  //*Function to export uppercase method
+  Handlebars.registerHelper('upper_rtype',function(str){
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  })
   //*Aiming to layout dir, index.hbs file
-  res.render('index',{title:'index page',layout:'index'});
+  res.render('index',{title:'index page',layout:'index',rtype:TipoHabitacion});
   // res.send('HOME')
 });
+
+
 
 router.post('/',async (req,res)=>{
   const {id} = req.params;
