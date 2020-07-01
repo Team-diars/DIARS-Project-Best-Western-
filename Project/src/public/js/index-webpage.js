@@ -68,8 +68,8 @@ $('.bedroom-nav a').on('click', function () {
 // Animation hotel rooms
 $(function () {
   //Removing class hide, so its showing first element
-  $('.content-info-array .content-info').show()
-
+  $('.content-info-array .content-info').hide()
+  $('.content-info-array .content-info:first').show()
   $('.bed-items li a').on('click', function () {
     $('.content-info-array .content-info').hide()
     var enlace = $(this).attr('href');
@@ -96,3 +96,7 @@ $(function () {
     return false
   })
 })
+
+// Handlebars.registerHelper('upper',function(href){
+//   return href.toUpperCase();
+// })
