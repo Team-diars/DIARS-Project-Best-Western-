@@ -81,25 +81,25 @@ try {
 }
 
 //Select roomtype-capacity
-try {
-    [document.getElementById('bedtype'), document.getElementById('nbeds')].forEach(item => {
-        item.addEventListener('input', () => {
-            var btype = document.getElementById('bedtype').value;
-            var nbeds = document.getElementById('nbeds').value;
-            if (btype === 'Single') {
-                var val = 1 * nbeds;
-                document.getElementById('roomcapacity').setAttribute('value', val);
-                document.getElementById('roomcapacity').parentNode.classList.add('placeholder-active');
-            }
-            else {
-                var val = 2 * nbeds;
-                document.getElementById('roomcapacity').setAttribute('value', val);
-                document.getElementById('roomcapacity').parentNode.classList.add('placeholder-active');
-            }
-        });
-    });
-} catch (error) {
-}
+// try {
+//     [document.getElementById('bedtype'), document.getElementById('nbeds')].forEach(item => {
+//         item.addEventListener('input', () => {
+//             var btype = document.getElementById('bedtype').value;
+//             var nbeds = document.getElementById('nbeds').value;
+//             if (btype === 'Single') {
+//                 var val = 1 * nbeds;
+//                 document.getElementById('roomcapacity').setAttribute('value', val);
+//                 document.getElementById('roomcapacity').parentNode.classList.add('placeholder-active');
+//             }
+//             else {
+//                 var val = 2 * nbeds;
+//                 document.getElementById('roomcapacity').setAttribute('value', val);
+//                 document.getElementById('roomcapacity').parentNode.classList.add('placeholder-active');
+//             }
+//         });
+//     });
+// } catch (error) {
+// }
 
 //Hide overlay
 try {
