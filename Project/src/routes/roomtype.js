@@ -8,7 +8,7 @@ const pool = require('../database');
 router.get('/', isnotlogedin, async (req, res) => {
     //*Function to export uppercase method within roomtype/list
     Handlebars.registerHelper('upper_rtype',function(str){
-      return str.charAt(0).toUpperCase() + str.slice(1);
+      return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     })
 
     const troom = await pool.query('select * from t_room where status=1');
