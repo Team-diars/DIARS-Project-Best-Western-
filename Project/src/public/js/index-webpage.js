@@ -97,6 +97,5 @@ $(function () {
   })
 })
 
-// Handlebars.registerHelper('upper',function(href){
-//   return href.toUpperCase();
-// })
+
+const troom_string = $('#troom_selection option:selected').text();

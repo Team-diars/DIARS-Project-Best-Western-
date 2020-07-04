@@ -123,11 +123,11 @@
                 <div class="form-row">
                   <div class="form-group m-2">
                     <label>Full name</label>
-                    <input name="fullname" type="text" class="form-control" placeholder="Full name" autofocus>
+                    <input name="fullname" type="text" class="form-control" placeholder="Full name" autofocus required>
                   </div>
                   <div class="form-group m-2">
                     <label>Type</label>
-                    <select name="troom" class="custom-select form-control">
+                    <select name="troom" id="troom_selection" class="custom-select form-control" required>
                       <option selected>Select your type</option>
                       {{#each rtype}}
                       <option value="{{troom_id}}">{{upper_rtype roomtype}}</option>
@@ -147,7 +147,7 @@
                   </div>
                   <div class="form-group m-2">
                     <label>People</label>
-                    <input name="peoplequantity" class="form-control" placeholder="Enter a number" required type="number" value="" min="1" max="15"/>
+                    <input name="peoplequantity" class="form-control" placeholder="Enter a number"  type="number" min="1" max="15" required>
 
                   </div>
                   <div class="form-group m-2">
@@ -156,8 +156,8 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <button class="btn btn-success btn-lg m-1">Submit</button>
                   <button class="btn btn-secondary btn-lg m-1" id="btn-back">Back</button>
+                  <button class="btn btn-success btn-lg m-1">Submit</button>
                 </div>
               </form>
             </div>
