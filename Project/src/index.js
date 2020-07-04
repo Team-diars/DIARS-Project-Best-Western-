@@ -68,6 +68,7 @@ app.use('/role',require('./routes/role'));
 app.use('/users',require('./routes/users'));
 app.use('/guest',require('./routes/guest'));
 app.use('/booked-room',require('./routes/booked-room'));
+app.use('/reservation',require('./routes/reservation'));
 app.use(require('./routes/auth'))
 app.use(require('./routes/home'))
 
