@@ -7,34 +7,34 @@ const Handlebars = require('handlebars');
 
 router.get('/', async (req,res)=>{
 
-  const TipoHabitacion = await pool.query('SELECT * FROM t_room WHERE status=1');
+  const habitaciones = await pool.query('SELECT * FROM t_room WHERE status=1');
   
   //*Function to export uppercase method
   Handlebars.registerHelper('upper_rtype',function(str){
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   })
   //*Aiming to layout dir, index.hbs file
-  res.render('index',{title:'index page',layout:'index',rtype:TipoHabitacion});
+  res.render('index',{title:'index page',layout:'index',rtype:habitaciones});
   // res.send('HOME')
 });
 
-
-
 router.post('/',async (req,res)=>{
   const {id} = req.params;
-  const { NombreCompleto,TipoHabitacion,CantPersonas,NumeroCelular,FechaInicio,FechaSalida } = req.body;
-  const validFechaInicio = helpers.formatdb(FechaInicio)
-  const validFechaSalida = helpers.formatdb(FechaSalida)
-  const newLink = {
-    NombreCompleto,
-    TipoHabitacion,
-    CantPersonas,
-    NumeroCelular,
-    FechaInicio:validFechaInicio,
-    FechaSalida:validFechaSalida
-  }
+  const { fullname,phonenumber,peoplequantity,checkin,checkout,troom } = req.body;
+  const validFechaInicio = helpers.formatdb(checkin)
+  const validFechaSalida = helpers.formatdb(checkout)
+  troom_price = pool.query(`SELECT price FROM t_room WHERE roomtype LIKE '${troom}'`)
+  // const newLink = {
+  //   fullname,
+  //   phonenumber,
+  //   peoplequantity,
+  //   checkin:validFechaInicio,
+  //   checkout:validFechaSalida,
+  //   troom,
+  //   total: 
+  // }
   console.log(newLink);
-  pool.query('INSERT INTO reserva set ?',[newLink])
+  pool.query('INSERT INTO reservation set ?',[newLink])
   req.flash('success','Reservation was made successfully')
   res.redirect('/')
 })

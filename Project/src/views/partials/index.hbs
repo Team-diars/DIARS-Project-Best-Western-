@@ -82,186 +82,86 @@
           <div class="bedroom-nav">
             <nav class="navwrapper">
               <ul class="bed-items">
-                <li class="bed-item"><a href="#individual" class="active-item">Individual</a></li>
-                <li class="bed-item"><a href="#double">Double</a></li>
-                <li class="bed-item"><a href="#triple">Triple</a></li>
-                <li class="bed-item"><a href="#quad">Quad</a></li>
-                <li class="bed-item"><a href="#twin">Twin</a></li>
-                <li class="bed-item"><a href="#queen">Queen</a></li>
-                <li class="bed-item"><a href="#king">King</a></li>
+                {{#each rtype}}
+                <li class="bed-item"><a href="#{{troom_id}}">{{upper_rtype roomtype}}</a></li>
+                {{/each}}
               </ul>
             </nav>
           </div>
+
           <div class="content-info-array">
-            <div class="content-info" id="individual">
+            {{#each rtype}}
+            <div class="content-info" id="{{troom_id}}">
               <div class="bedroom-photo">
                 <img src="/img/individual-room.jpeg" alt="">
               </div>
               <div class="bedroom-details">
-                <h2>Individual</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam suscipit explicabo, quia eos minus a
-                </p>
+                <h2>{{upper_rtype roomtype}}</h2>
+                <p>{{upper_rtype description}}</p>
                 <div class="icons-info">
-                  <span><img src="/img/client-quantity.svg" width="32px" height="32px">1</span>
-                  <span><img src="/img/bed-quantity.svg" width="32px" height="32px">1</span>
+                  <span><img src="/img/client-quantity.svg" width="32px" height="32px">{{capacity}}</span>
+                  <span><img src="/img/bed-quantity.svg" width="32px" height="32px">{{nbeds}}</span>
+                  <span><img src="/img/price.svg" width="32px" height="32px">{{price}}</span>
                 </div>
               </div>
             </div>
-
-            <div class="content-info hide-panel" id="double">
-              <div class="bedroom-photo">
-                <img src="/img/double-room.jpg" alt="">
-              </div>
-              <div class="bedroom-details">
-                <h2>Double</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam suscipit explicabo, quia eos minus a
-                  sit. </p>
-                <div class="icons-info">
-                  <span><img src="/img/client-quantity.svg" width="32px" height="32px">2</span>
-                  <span><img src="/img/bed-quantity.svg" width="32px" height="32px">1 - 2</span>
-                </div>
-              </div>
-            </div>
-            <div class="content-info hide-panel" id="triple">
-              <div class="bedroom-photo">
-                <img src="/img/triple-room.jpg" alt="">
-              </div>
-              <div class="bedroom-details">
-                <h2>Triple</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam suscipit explicabo, quia eos minus a
-                  sit. </p>
-                <div class="icons-info">
-                  <span><img src="/img/client-quantity.svg" width="32px" height="32px">3</span>
-                  <span><img src="/img/bed-quantity.svg" width="32px" height="32px">2 - 4</span>
-                </div>
-              </div>
-            </div>
-            <div class="content-info hide-panel" id="quad">
-              <div class="bedroom-photo">
-                <img src="/img/quad-room.jpg" alt="">
-              </div>
-              <div class="bedroom-details">
-                <h2>Quad</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam suscipit explicabo, quia eos minus a
-                  sit. </p>
-                <div class="icons-info">
-                  <span><img src="/img/client-quantity.svg" width="32px" height="32px">4</span>
-                  <span><img src="/img/bed-quantity.svg" width="32px" height="32px">2 - 4</span>
-                </div>
-              </div>
-            </div>
-            <div class="content-info hide-panel" id="twin">
-              <div class="bedroom-photo">
-                <img src="/img/twin-room.jpg" alt="">
-              </div>
-              <div class="bedroom-details">
-                <h2>Twin</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam suscipit explicabo, quia eos minus a
-                  sit. </p>
-                <div class="icons-info">
-                  <span><img src="/img/client-quantity.svg" width="32px" height="32px">2 - 4</span>
-                  <span><img src="/img/bed-quantity.svg" width="32px" height="32px">2</span>
-                </div>
-              </div>
-            </div>
-            <div class="content-info hide-panel" id="queen">
-              <div class="bedroom-photo">
-                <img src="/img/queen-room.jpg" alt="">
-              </div>
-              <div class="bedroom-details">
-                <h2>Queen</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam suscipit explicabo, quia eos minus a
-                  sit.</p>
-                <div class="icons-info">
-                  <span><img src="/img/client-quantity.svg" width="32px" height="32px">1 - 2</span>
-                  <span><img src="/img/bed-quantity.svg" width="32px" height="32px">1</span>
-                </div>
-              </div>
-            </div>
-            <div class="content-info hide-panel" id="king">
-              <div class="bedroom-photo">
-                <img src="/img/king-room.jpg" alt="">
-              </div>
-              <div class="bedroom-details">
-                <h2>King</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam suscipit explicabo, quia eos minus a
-                  sit.</p>
-                <div class="icons-info">
-                  <span><img src="/img/client-quantity.svg" width="32px" height="32px">1 - 2</span>
-                  <span><img src="/img/bed-quantity.svg" width="32px" height="32px">1</span>
-                </div>
-              </div>
-            </div>
-
+            {{/each}}
           </div>
         </div>
-      </div>
+          <div class="reservation-wrapper" id="contacto">
+            <div class="reservation-wrapper-details">
+              <h2>Contact us</h2>
+              <p>MyHotels Malta Head Office: <br>
+                1 Ross Street, Paceville <br>
+                St Julians, Malta <br>
+                Tel: +356 2137 8785</p>
+              <button class="btn btn-success btn-lg" id="btn-make">Make your reservation</button>
+            </div>
+            {{!-- FORMULARIO --}}
+            <div class="reservation-wrapper-reservation">
+              <form action="/" method="POST">
+                <div class="form-row">
+                  <div class="form-group m-2">
+                    <label>Full name</label>
+                    <input name="fullname" type="text" class="form-control" placeholder="Full name" autofocus>
+                  </div>
+                  <div class="form-group m-2">
+                    <label>Type</label>
+                    <select name="troom" class="custom-select form-control">
+                      <option selected>Select your type</option>
+                      {{#each rtype}}
+                      <option value="{{troom_id}}">{{upper_rtype roomtype}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                  <div class="form-group m-2">
+                    <label for="check-in">Check-In</label>
+                    <input name="checkin" class="form-control" id="check-in" placeholder="Check-In" required />
+                  </div>
+                </div>
+                {{!-- SECOND ROW --}}
+                <div class="form-row">
+                  <div class="form-group m-2">
+                    <label>Phone Number</label>
+                    <input name="phonenumber" type="text" class="form-control" placeholder="Phone Number" required>
+                  </div>
+                  <div class="form-group m-2">
+                    <label>People</label>
+                    <input name="peoplequantity" class="form-control" placeholder="Enter a number" required type="number" value="" min="1" max="15"/>
 
-      <div class="reservation-wrapper" id="contacto">
-        <div class="reservation-wrapper-details">
-          <h2>Contact us</h2>
-          <p>MyHotels Malta Head Office: <br>
-            1 Ross Street, Paceville <br>
-            St Julians, Malta <br>
-            Tel: +356 2137 8785</p>
-          <button class="btn btn-success btn-lg" id="btn-make">Make your reservation</button>
-        </div>
-        {{!-- FORMULARIO --}}
-        <div class="reservation-wrapper-reservation">
-          <form action="/" method="POST">
-            <div class="form-row">
-              <div class="form-group m-2">
-                <label>Full name</label>
-                <input name="NombreCompleto" type="text" class="form-control" placeholder="Full name" autofocus>
-              </div>
-              <div class="form-group m-2">
-                <label>Type</label>
-                <select name="TipoHabitacion" class="custom-select form-control">
-                  <option selected>Select your type</option>
-                  <option value="1">Individual</option>
-                  <option value="2">Double</option>
-                  <option value="3">Triple</option>
-                  <option value="3">Quad</option>
-                  <option value="4">Twin</option>
-                  <option value="5">Queen</option>
-                  <option value="6">King</option>
-                </select>
-              </div>
-              <div class="form-group m-2">
-                <label for="check-in">Check-In</label>
-                <input name="FechaInicio" class="form-control" id="check-in" placeholder="Check-In" required />
-              </div>
+                  </div>
+                  <div class="form-group m-2">
+                    <label for="check-out">Check-Out</label>
+                    <input name="checkout" class="form-control" id="check-out" placeholder="Check-Out" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-success btn-lg m-1">Submit</button>
+                  <button class="btn btn-secondary btn-lg m-1" id="btn-back">Back</button>
+                </div>
+              </form>
             </div>
-            {{!-- SECOND ROW --}}
-            <div class="form-row">
-              <div class="form-group m-2">
-                <label>Phone Number</label>
-                <input  name="NumeroCelular" type="text" class="form-control" placeholder="Phone Number"
-                  required>
-              </div>
-              <div class="form-group m-2">
-                <label>People</label>
-                <select name="CantPersonas" class="custom-select form-control" required>
-                  <option selected>Select Quantity</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                  <option value="4">Four</option>
-                  <option value="5">Over Four</option>
-                </select>
-              </div>
-              <div class="form-group m-2">
-                <label for="check-out">Check-Out</label>
-                <input name="FechaSalida" class="form-control" id="check-out" placeholder="Check-Out" required/>
-              </div>
-            </div>
-            <div class="form-group">
-            <button class="btn btn-success btn-lg m-1">Submit</button>
-            <button class="btn btn-secondary btn-lg m-1" id="btn-back">Back</button>
-            </div>
-          </form>
-        </div>
-      </div>
+          </div>
   </main>
   <footer>
     <div class="derechos-reservados">
