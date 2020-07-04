@@ -8,7 +8,7 @@
                             <div>
                                 <i class="fa fa-bed mr-2" aria-hidden="true"></i>
                             </div>
-                            <h4>Maitenance room</h4>
+                            <h4>Reservations</h4>
                         </div>
                         <a class="btn btn-success" href="room/add">
                             <i class="fa fa-plus mr-1" aria-hidden="true"></i>Add
@@ -22,24 +22,27 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Room number</th>
-                                    <th scope="col">Floor</th>
-                                    <th scope="col">Room type</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Full Name</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">People</th>
+                                    <th scope="col">Check-in</th>
+                                    <th scope="col">Check-out</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">Roomtype</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="table">
-                                {{#each room}}
+                                {{#each reservation}}
                                 <tr>
-                                    {{!-- <th scope="row">{{index @index }}</th> --}}
                                     <th scope="row">{{index @index }}</th>
-                                    <td>{{number}}</td>
-                                    <td>{{floor floor}}</td>
-                                    <td>{{roomtype}}</td>
-                                    <td>{{money price}}</td>
-                                    <td>{{room_status status}}</td>
+                                    <td>{{fullname}}</td>
+                                    <td>{{phonenumber}}</td>
+                                    <td>{{peoplequantity}}</td>
+                                    <td>{{checkin}}</td>
+                                    <td>{{checkout}}</td>
+                                    <td>{{total}}</td>
+                                    <td>{{troom_id}}</td>
                                     <td>
                                         <a href="room/view/{{room_id}}">
                                             <button type="button" class="btn btn-secondary">
