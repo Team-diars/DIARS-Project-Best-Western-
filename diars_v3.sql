@@ -195,16 +195,27 @@ CREATE TABLE `proveedor` (
 -- Estructura de tabla para la tabla `reserva`
 --
 
-CREATE TABLE `reserva` (
-  `idRerserva` int(11) NOT NULL,
-  `Codigo_reserva` varchar(20) NOT NULL,
-  `Nombre` varchar(45) NOT NULL,
-  `ApellidoP` varchar(45) DEFAULT NULL,
-  `Email` varchar(45) DEFAULT NULL,
-  `FechaInicio` date DEFAULT NULL,
-  `FechaSalida` date DEFAULT NULL,
-  `PrecioTotal` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `reservation` (
+  `id_reservation` int(11) NOT NULL,
+  `fullname` varchar(100) NOT NULL,
+  `phonenumber` varchar(10) NOT NULL,
+  `peoplequantity` int(11) NOT NULL,
+  `checkin` date DEFAULT NULL,
+  `checkout` date DEFAULT NULL,
+  `total` double DEFAULT NULL,
+  `troom_id` INT(11)
+)
+
+ALTER TABLE `reservation`
+ADD PRIMARY KEY (`id_reservation`)
+
+ALTER TABLE `reservation`
+MODIFY `id_reservation` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1
+
+ALTER TABLE `reservation`
+ADD CONSTRAINT `fk_troom` FOREIGN KEY (`troom_id`) REFERENCES `t_room`(`troom_id`)
+
+
 
 -- --------------------------------------------------------
 
@@ -378,7 +389,6 @@ INSERT INTO `worker` (`worker_id`, `worker_code`, `name`, `lastname`, `ssn`, `st
 (2, 'WK0002', 'Maria', 'Delgado', '12354534', 'Illinois', 'Springfield', 'Address1', 'cs@gmail.com', '12313123', '123123123', 1, 3, '0000-00-00', 'Maria', 'Password2', 0, 1),
 (3, 'WK0003', 'Alejandro', 'Zoumba', '123234345', 'Illinois', 'Peoria', 'Address 3', 'Ale@gmail.com', '90712312', '9821731', 1, 2, '2020-06-26', 'Username1', 'Password1', 1, 1),
 (5, 'Wk00004', 'Del', 'Koke', '123123234', 'Ohio', 'Dayton', 'Address 01', 'csa@gmail.com', '90273123', '12312312', 2, 2, '2020-06-29', 'koke', 'password', 1, 1);
-
 --
 -- Índices para tablas volcadas
 --
