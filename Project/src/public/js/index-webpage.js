@@ -80,13 +80,22 @@ $(function () {
   })
 })
 
+//todo: Reservation animation
 $('.reservation-wrapper-reservation').hide()
-
+// $('.reservation-wrapper-ticket').hide()
 $(function () {
   $('.reservation-wrapper-details #btn-make').on('click', function () {
     $('.reservation-wrapper-details').hide()
     $('.reservation-wrapper-reservation').show(500)
   })
+})
+
+//todo: In case of success ticket
+$(function(){
+  if ($('.reservation-wrapper div').hasClass('ticket-active')){
+    $('.reservation-wrapper-details').hide(100);
+  }
+  return false;
 })
 
 $(function () {
@@ -97,5 +106,16 @@ $(function () {
   })
 })
 
+$(function(){
+  $('.ticket-active #total').hide()
+  $('.ticket-active #total:last').show()
+  return false;
+})
 
-const troom_string = $('#troom_selection option:selected').text();
+$(function(){
+  $('.ticket-active button').on('click',function(){
+    $('.ticket-active').hide();
+    $('.reservation-wrapper-details').show(500);
+  })
+  return false;
+})
