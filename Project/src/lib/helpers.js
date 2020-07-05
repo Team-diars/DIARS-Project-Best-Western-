@@ -1,6 +1,7 @@
 const moment=require('moment');
 const numeral=require('numeral');
 const bcrypt=require('bcryptjs');
+const Handlebars = require('handlebars');
 const helpers = {};
 
 helpers.index = (index) => {
@@ -82,5 +83,9 @@ helpers.matchpassword = async(password,savedpassword)=>{
     return false;
   }
 };
+
+helpers.Capitalize = Handlebars.registerHelper('capitalize',function(str){
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+});
 
 module.exports = helpers;
