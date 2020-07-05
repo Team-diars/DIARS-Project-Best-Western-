@@ -4,18 +4,15 @@ const {islogedin,isnotlogedin} = require('../lib/out');
 const pool = require('../database');
 const helpers = require('../lib/helpers');
 const Handlebars = require('handlebars');
+const passport = require('passport');
 
 router.get('/', async (req,res)=>{
-
-  //*Function to export uppercase method
-  Handlebars.registerHelper('upper_rtype',function(str){
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-  });
   const habitaciones = await pool.query(`SELECT *
     FROM reservation RIGHT JOIN t_room ON reservation.id_reservation = t_room.troom_id WHERE t_room.status = 1`);
 
+  const reservation = await pool.query(`SELECT * FROM reservation`)
   //*Aiming to layout dir, index.hbs file
-  res.render('index',{title:'index page',layout:'index',rtype:habitaciones});
+  res.render('index',{title:'index page',layout:'index',rtype:habitaciones,reservation});
   // res.send('HOME')
 });
 
@@ -34,6 +31,7 @@ router.post('/',async (req,res)=>{
   const total = troom_price[0].price*peoplequantity;
 
   const newLink = {
+    
     fullname,
     phonenumber,
     peoplequantity,
