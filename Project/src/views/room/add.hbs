@@ -25,7 +25,7 @@
                         <select class="form-control" size="1" name="roomtype" required>
                             <option value="" hidden></option>
                             {{#each rtype}}
-                                <option value="{{troom_id}}">{{roomtype}}</option>
+                                <option value="{{troom_id}}">{{capitalize roomtype}}</option>
                             {{/each}}
                         </select>
                         <label class="placeholder">Room type</label>
