@@ -113,6 +113,12 @@ $(function(){
 })
 
 $(function(){
+  $('.ticket-active #ticket').hide()
+  $('.ticket-active #ticket:last').show()
+  return false
+})
+
+$(function(){
   $('.ticket-active button').on('click',function(){
     $('.ticket-active').hide();
     $('.reservation-wrapper-details').show(500);
