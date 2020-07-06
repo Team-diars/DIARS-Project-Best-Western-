@@ -166,8 +166,8 @@
             </div>
             {{#if success}}
             <div class="form-group ticket-active">
-                <h1>Ticket:<span id="num-ticket">5304</span></h1>
                 {{#each reservation}}
+                  <h1 id="ticket">Ticket: {{num_ticket}}</h1>
                   <h2 id="total">Total: {{total}}</h2>
                 {{/each}}
                 <h4>Please take a note of this ticket <br> you will give us its number when you arrive at Best Western</h4>
