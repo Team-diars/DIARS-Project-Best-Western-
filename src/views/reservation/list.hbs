@@ -1,0 +1,90 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md">
+            <div class="card text-center">
+                <div class="card-body p-4">
+                    <div class="row mx-auto form-header">
+                        <div class="form-header-title">
+                            <div>
+                                <i class="fa fa-bed mr-2" aria-hidden="true"></i>
+                            </div>
+                            <h4>Reservations</h4>
+                        </div>
+                        <a class="btn btn-success" href="room/add">
+                            <i class="fa fa-plus mr-1" aria-hidden="true"></i>Add
+                        </a>
+                    </div>
+                    <div class="form-group row mx-auto mt-2">
+                        <input class="form-control" type="number" id="searchbar" placeholder="Filter by room number">
+                    </div>
+                    <div class="row mx-auto mt-2">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Full Name</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">People</th>
+                                    <th scope="col">Check-in</th>
+                                    <th scope="col">Check-out</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">Roomtype</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table">
+                                {{#each reservation}}
+                                <tr>
+                                    <th scope="row">{{index @index }}</th>
+                                    <td>{{fullname}}</td>
+                                    <td>{{phonenumber}}</td>
+                                    <td>{{peoplequantity}}</td>
+                                    <td>{{formatday checkin}}</td>
+                                    <td>{{formatday checkout}}</td>
+                                    <td>{{total}}</td>
+                                    <td>{{roomtype}}</td>
+                                    <td>
+                                        <a href="room/view/{{room_id}}">
+                                            <button type="button" class="btn btn-secondary">
+                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                            </button>
+                                        </a>
+                                        <a href="room/edit/{{room_id}}">
+                                            <button type="button" class="btn btn-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </a>
+                                        <a href="room/delete/{{room_id}}">
+                                            <button type="button" class="btn btn-danger">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const searchbar = document.getElementById('searchbar');
+    searchbar.addEventListener('keyup',()=>{
+        const term = searchbar.value.toLowerCase();
+        const table = document.getElementById('table');
+        const rows = table.getElementsByTagName('tr');
+        Array.from(rows).forEach((rows)=>{
+            const name = rows.children[1].textContent;
+            if(name.toLowerCase().indexOf(term)!=-1){
+                rows.style.display='table-row';
+            }else{
+                rows.style.display='none';
+            }
+        });
+    })
+</script>
