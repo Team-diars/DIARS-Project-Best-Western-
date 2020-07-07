@@ -1,0 +1,55 @@
+<div class="container container-resp p-4">
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-header pl-5">
+                <div class="form-header-title">
+                    <div>
+                        <i class="fas fa-users-cog mr-2" style="font-size: 20px;"></i>
+                    </div>
+                    <h3 class="title">Maitenance user</h3>
+                </div>
+            </div>
+            <form class="form-body" action="/users/edit/{{user.worker_id}}" method="POST">
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="name" id="name" value="{{user.name}} {{user.lastname}}" readonly>
+                        <label class="placeholder">Worker</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="datereg" value="{{formatday user.datereg}}" readonly>
+                        <label class="placeholder">Reg date</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="username" value="{{user.username}}" autocomplete="off" readonly>
+                        <label class="placeholder">Username</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="password" name="password" value="{{user.password}}" id="inp-password" readonly>
+                        <label class="placeholder">Password</label>
+                        <label class="placeholder-view" id="password">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <select class="form-control" size="1" name="role" id="select-role" disabled>
+                            <option value="{{user.role_id}}" hidden>{{user.role}}</option>
+                        </select>
+                        <label class="placeholder">Role</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <a class="btn btn-danger btn-block" href="/users">Cancel</a>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input type="submit" class="btn btn-primary btn-block" value="Accept">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

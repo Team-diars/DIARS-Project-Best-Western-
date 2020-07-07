@@ -1,0 +1,87 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md">
+            <div class="card text-center">
+                <div class="card-body p-4">
+                    <div class="row mx-auto form-header">
+                        <div class="form-header-title">
+                            <div>
+                                <i class="fas fa-users-cog mr-2"></i>
+                            </div>
+                            <h4>Maitenance users</h4>
+                        </div>
+                        <a class="btn btn-success" href="users/add">
+                            <i class="fa fa-plus mr-1" aria-hidden="true"></i>Add
+                        </a>
+                    </div>
+                    <div class="form-group row mx-auto mt-2">
+                        <input class="form-control" type="text" placeholder="Filter by any attribute" id="searchbar">
+                    </div>
+                    <div class="row mx-auto mt-2">
+                        <table class="table" id="table-worker">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Worker code</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Reg date</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table">
+                                {{#each user}}
+                                <tr>
+                                    <th scope="row">{{index @index }}</th>
+                                    <td>{{worker_code}}</td>
+                                    <td>{{name}} {{lastname}}</td>
+                                    <td>{{username}}</td>
+                                    <td>{{formatday datereg}}</td>
+                                    <td>{{role}}</td>
+                                    <td>
+                                        <a href="users/view/{{worker_id}}">
+                                            <button type="button" class="btn btn-secondary">
+                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                            </button>
+                                        </a>
+                                        <a href="users/edit/{{worker_id}}">
+                                            <button type="button" class="btn btn-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </a>
+                                        <a href="users/delete/{{worker_id}}">
+                                            <button type="button" class="btn btn-danger">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const searchbar = document.getElementById('searchbar');
+    searchbar.addEventListener('keyup',()=>{
+        const term = searchbar.value.toLowerCase();
+        const table = document.getElementById('table');
+        const rows = table.getElementsByTagName('tr');
+        Array.from(rows).forEach((rows)=>{
+            const code = rows.children[1].textContent;
+            const name = rows.children[2].textContent;
+            const username = rows.children[3].textContent;
+            if(code.toLowerCase().indexOf(term)!=-1 || name.toLowerCase().indexOf(term)!=-1 || username.toLowerCase().indexOf(term)!=-1){
+                rows.style.display='table-row';
+            }else{
+                rows.style.display='none';
+            }
+        });
+    })
+</script>

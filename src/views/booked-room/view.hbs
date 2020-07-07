@@ -1,0 +1,64 @@
+<div class="container container-resp">
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-header pl-5">
+                <div class="form-header-title">
+                    <div>
+                        <i class="fa fa-book m-2" aria-hidden="true" style="font-size: 20px;"></i>
+                    </div>
+                    <h3 class="title">Book room</h3>
+                </div>
+            </div>
+            <form class="form-body">
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="booked_cod" value="{{booked.booked_cod}}" autocomplete="off" readonly>
+                        <label class="placeholder">Book id</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" id="nameguest" name="firstname" value="{{booked.firstname}} {{booked.lastname}}" autocomplete="off"
+                            readonly>
+                        <label class="placeholder">Guest</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" id="roomn" name="roomn" autocomplete="off" value="{{booked.roomn}}"
+                            readonly>
+                        <label class="placeholder">Room</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="cant" id="cant" value="{{booked.cant}}" autocomplete="off"
+                            readonly>
+                        <label class="placeholder">Number of guest</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" id="datein" name="datein" value="{{formatday booked.datein}}"
+                            autocomplete="off" readonly>
+                        <label class="placeholder">Check in</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" id="dateout" name="dateout" value="{{formatday booked.dateout}}"
+                            autocomplete="off" readonly>
+                        <label class="placeholder">Check out</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" id="price" name="price" value="{{fixed booked.price}}" readonly>
+                        <label class="placeholder">Price</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <a class="btn btn-danger btn-block" href="/booked-room">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

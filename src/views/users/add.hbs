@@ -1,0 +1,154 @@
+<div id="overlay-2" class="overlay" style="display: none;">
+    <div class="finder">
+        <div class="head">
+            <div class="head-body">
+                Find worker
+            </div>
+            <div class="button close-fnd" id="close-fnd">
+                <span aria-hidden="true">&times;</span>
+            </div>
+        </div>
+        <div class="body">
+            <div class="input-finder form-group mb-4">
+                <input type="text" class="form-control" placeholder="Find by name" id="searchbar">
+            </div>
+            <div class="table-fixed">
+                <table class="table table-hover text-center" id="table-worker">
+                    <thead>
+                        <th>#</th>
+                        <th hidden></th>
+                        <th>Id Worker</th>
+                        <th>Name</th>
+                        <th>Job pos</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody id="table">
+                        {{#each worker}}
+                        <tr>
+                            <th scope="row">{{index @index }}</th>
+                            <td hidden>{{worker_id}}</td>
+                            <td>{{worker_code}}</td>
+                            <td>{{name}} {{lastname}}</td>
+                            <td>{{jobpos}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary btnworker">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="container container-resp p-4">
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-header pl-5">
+                <div class="form-header-title">
+                    <div>
+                        <i class="fas fa-users-cog mr-2" style="font-size: 20px;"></i>
+                    </div>
+                    <h3 class="title">Maitenance user</h3>
+                </div>
+            </div>
+            <form class="form-body" action="/users/add" method="POST">
+                <input type="text" name="worker_id" id="worker_id" hidden readonly required>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="name" id="name" required readonly>
+                        <label class="placeholder">Worker</label>
+                        <button type="button" class="btn btn-secondary" id="btn-worker">Find</button>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" id="datereg" name="datereg" value="{{momentnow}}"
+                            readonly required>
+                        <label class="placeholder">Reg date</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="username" autocomplete="off" required>
+                        <label class="placeholder">Username</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="password" name="password" id="inp-password" required>
+                        <label class="placeholder">Password</label>
+                        <label class="placeholder-view" id="password">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <select class="form-control" size="1" name="role" id="select-role" required>
+                            <option value="" hidden></option>
+                            {{#each role}}
+                            <option value="{{role_id}}">{{role}}</option>
+                            {{/each}}
+                        </select>
+                        <label class="placeholder">Role</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <a class="btn btn-danger btn-block" href="/users">Cancel</a>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input type="submit" class="btn btn-primary btn-block" value="Accept">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    const searchbar = document.getElementById('searchbar');
+    searchbar.addEventListener('keyup', () => {
+        const term = searchbar.value.toLowerCase();
+        const table = document.getElementById('table');
+        const rows = table.getElementsByTagName('tr');
+        Array.from(rows).forEach((rows) => {
+            const code = rows.children[2].textContent;
+            const name = rows.children[3].textContent;
+            if (code.toLowerCase().indexOf(term) != -1 || name.toLowerCase().indexOf(term) != -1) {
+                rows.style.display = 'table-row';
+            } else {
+                rows.style.display = 'none';
+            }
+        });
+    })
+
+    try {
+        const btn_finder = document.getElementById('btn-worker');
+        btn_finder.addEventListener('click', () => {
+            document.getElementById('overlay-2').style.display = "flex";
+        });
+    } catch (error) {
+    }
+
+    try {
+        const close_fnd = document.getElementById('close-fnd');
+        close_fnd.addEventListener('click', () => {
+            document.getElementById("overlay-2").style.display = "none";
+        })
+    } catch (error) {
+    }
+
+    //Set worker-add user
+    try {
+        $("#table-worker tbody tr button").click(function () {
+            var row = $(this).closest("tr");
+            document.getElementById('worker_id').value = row.find("td:eq(0)").text();
+            document.getElementById('name').value = row.find("td:eq(2)").text();
+            document.getElementById("overlay-2").style.display = "none";
+            document.getElementById('name').parentNode.classList.add('placeholder-active');
+
+        });
+    } catch (error) {
+    }
+
+</script>

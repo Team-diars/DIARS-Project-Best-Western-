@@ -1,0 +1,243 @@
+<style>
+    body {
+        height: 90vh;
+        width: 97vw;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Roboto', sans-serif;
+        font-size: 15px;
+    }
+
+    .top-report {
+        height: fit-content;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 40px;
+    }
+
+    .top-report .title {
+        display: flex;
+        justify-content: center;
+        font-size: 30px;
+    }
+
+    /*Info doc*/
+    .body {
+        width: 100%;
+        height: 80%;
+        padding: 5px;
+    }
+
+    .top-info {
+        height: 90px;
+        margin-bottom: 5px;
+    }
+
+    .top-info-line {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 25px;
+    }
+
+    .top-info-line .title {
+        width: 100%;
+        background-color: red;
+    }
+
+    .customer-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    .customer-info .vendor {
+        width: 350px;
+        height: fit-content;
+    }
+
+    .customer-info .customer {
+        width: 350px;
+        height: fit-content;
+    }
+
+    .info-title {
+        background-color: #8EA9DB;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        font-weight: 800;
+    }
+
+    .info-line {
+        height: 30px;
+        display: flex;
+        align-items: center;
+        padding-left: 5px;
+    }
+
+    .info-line p {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .info-line .title {
+        width: 100%;
+    }
+
+    .table-info {
+        width: 100%;
+    }
+
+    .table-info table {
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+    }
+
+    .table-info #thead tr {
+        background-color: #8EA9DB;
+    }
+
+    .table-fixed {
+        min-height: 200px;
+        margin-bottom: 20px;
+    }
+
+    .table-fixed thead th {
+        position: sticky;
+        top: -1px;
+        z-index: 1;
+    }
+
+    .table-fixed tbody td {
+        z-index: 0;
+    }
+
+    .table-fixed tbody {
+        margin-top: 20px;
+    }
+
+    table th,
+    table td {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+</style>
+<div class="top-report">
+    <div class="top-info">
+        <div class="top-info-line">
+            <p>Invoice ID : </p>
+            <p>{{booking.codPayment}}</p>
+        </div>
+        <div class="top-info-line">
+            <p>Issue date :</p>
+            <p>{{booking.datePayment}}</p>
+        </div>
+        <div class="top-info-line">
+            <p>Due date : </p>
+            <p>{{booking.datePayment}}</p>
+        </div>
+    </div>
+    <div class="title">
+        <h1>{{booking.typePayment}}</h1>
+    </div>
+</div>
+<div class="body">
+
+    <div class="customer-info">
+        <div class="vendor">
+            <div class="info-title">From</div>
+            <div class="info-line">
+                <p class="title">{{setting.name}}</p>
+
+            </div>
+            <div class="info-line">
+                <p class="title">{{setting.address}}</p>
+
+            </div>
+            <div class="info-line">
+                <p class="title">{{setting.state}},{{setting.city}},{{setting.zipcode}}</p>
+
+            </div>
+            <div class="info-line">
+                <p class="title">USA</p>
+
+            </div>
+            <div class="info-line">
+                <p class="title">{{setting.phone}}</p>
+
+            </div>
+            <div class="info-line">
+                <p class="title">{{setting.email}}</p>
+
+            </div>
+        </div>
+        <div class="customer">
+            <div class="info-title">Bill to</div>
+            <div class="info-line">
+                <p class="title">{{booking.firstname}}</p>
+
+            </div>
+            <div class="info-line">
+                <p class="title">{{booking.lastname}}</p>
+
+            </div>
+            <div class="info-line">
+                <p class="title">{{booking.state}}, {{booking.city}}</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="table-info table-fixed">
+        <table>
+            <thead id="thead">
+                <tr>
+                    <th>Description</th>
+                    <th>Check in</th>
+                    <th>Check out</th>
+                    <th>Cost/day</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="width: 40%; text-align: start;">Room rental ({{booking.roomtype}})</td>
+                    <td style="width: 15%;">{{booking.datein}}</td>
+                    <td style="width: 15%;">{{booking.dateout}}</td>
+                    <td style="width: 15%;">{{booking.roomprice}}</td>
+                    <td style="width: 15%;">{{booking.price}}</td>
+                </tr>
+            </tbody>
+            <tfoot id="final">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style=" background-color: #8EA9DB">Sub-Total</td>
+                    <td>{{booking.price}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style=" background-color: #8EA9DB">Tax rate({{setting.tax}}%)</td>
+                    <td>{{taxprice}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style=" background-color: #8EA9DB">Total</td>
+                    <td>{{booking.totalPayment}}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

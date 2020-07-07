@@ -1,0 +1,85 @@
+<div class="container container-resp p-4">
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-header pl-5">
+                <div class="form-header-title">
+                    <div>
+                        <i class="fa fa-user mr-2" aria-hidden="true" style="font-size: 20px;"></i>
+                    </div>
+                    <h3 class="title">Maitenance guest</h3>
+                </div>
+            </div>
+            <form class="form-body" action="/guest/add" method="POST">
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="firstname" autocomplete="off" required>
+                        <label class="placeholder">First name</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="lastname" autocomplete="off" required>
+                        <label class="placeholder">Last name</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <select class="form-control" size="1" name="doctype" id="select-doc" required>
+                            <option value="" hidden></option>
+                            <option value="Driver license">Driver license</option>
+                            <option value="ID card">ID card</option>
+                            <option value="Passport">Passport</option>
+                        </select>
+                        <label class="placeholder">Doc type</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="docnumber" autocomplete="off">
+                        <label class="placeholder">Doc number</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <select class="form-control" size="1" name="state" id="select-state" required>
+                            <option value="" hidden></option>
+                        </select>
+                        <label class="placeholder">State</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <select class="form-control" size="1" name="city" id="select-city">
+                            <option value="" hidden></option>
+                        </select>
+                        <label class="placeholder">City</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="address" autocomplete="off">
+                        <label class="placeholder">Address</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="email" autocomplete="off">
+                        <label class="placeholder">E-mail</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="phone" autocomplete="off">
+                        <label class="placeholder">Phone</label>
+
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="cellphone" autocomplete="off">
+                        <label class="placeholder">Cellphone</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <a class="btn btn-danger btn-block" href="/guest">Cancel</a>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input type="submit" class="btn btn-primary btn-block" value="Accept">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

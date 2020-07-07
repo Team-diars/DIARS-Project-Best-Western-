@@ -1,0 +1,125 @@
+<div class="container container-resp container-resp-2 p-4">
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-header pl-5">
+                <div class="form-header-title">
+                    <div>
+                        <i class="fas fa-users-cog mr-2" style="font-size: 20px;"></i>
+                    </div>
+                    <h3 class="title">Maitenance role</h3>
+                </div>
+            </div>
+            <form class="form-body" action="/role/edit/{{role.role_id}}" method="POST">
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="role" autocomplete="off" value="{{role.role}}"
+                            readonly>
+                        <label class="placeholder">Role name</label>
+                    </div>
+                </div>
+                <div class="marginRow table-fixed table-fixed-2">
+                    <table class="table table-sm ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Module</th>
+                                <th scope="col">Permissions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Room</td>
+                                <td>
+
+                                    <input type="checkbox" name="room" value="1" {{checked role.room}} onclick="return false">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Booking</td>
+                                <td>
+
+                                    <input type="checkbox" name="booking" value="1" {{checked role.booking}} onclick="return false">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Guest</td>
+                                <td>
+
+                                    <input type="checkbox" name="guest" value="1" {{checked role.guest}} onclick="return false">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Staff</td>
+                                <td>
+
+                                    <input type="checkbox" name="staff" value="1" {{checked role.staff}} onclick="return false">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Users</td>
+                                <td>
+
+                                    <input type="checkbox" name="user" value="1" {{checked role.user}} onclick="return false">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Housekeeping list</td>
+                                <td>
+
+                                    <input type="checkbox" name="hplist" value="1" {{checked role.hplist}} onclick="return false">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Product</td>
+                                <td>
+
+                                    <input type="checkbox" name="product" value="1" {{checked role.product}} onclick="return false">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Purchase order</td>
+                                <td>
+
+                                    <input type="checkbox" name="porder" value="1" {{checked role.porder}} onclick="return false">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Inventory receipt</td>
+                                <td>
+
+                                    <input type="checkbox" name="invreceipt" value="1" {{checked role.invreceipt}}
+                                        onclick="return false">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Inventory issue</td>
+                                <td>
+
+                                    <input type="checkbox" name="invissue" value="1" {{checked role.invissue}} onclick="return false">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cash module</td>
+                                <td>
+                                    <input type="checkbox" name="cashmodule" value="1" {{checked role.cashmodule}}
+                                        onclick="return false">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Settings</td>
+                                <td>
+                                    <input type="checkbox" name="setting" value="1" {{checked role.setting}} onclick="return false">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <a class="btn btn-danger btn-block" href="/role">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
