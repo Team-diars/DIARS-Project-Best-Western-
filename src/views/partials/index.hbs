@@ -6,7 +6,7 @@
       <nav class="navbar-home">
         <div class="container">
           <div class="flex-navbar">
-            <img src="img/logo.svg" alt="Logo image">
+            <img src="img/logo-white.svg" alt="Logo image">
 
             <ul class="navigation">
               <li class="home-item"><a class="enlace active" href="#inicio">Home</a></li>
@@ -82,186 +82,100 @@
           <div class="bedroom-nav">
             <nav class="navwrapper">
               <ul class="bed-items">
-                <li class="bed-item"><a href="#individual" class="active-item">Individual</a></li>
-                <li class="bed-item"><a href="#double">Double</a></li>
-                <li class="bed-item"><a href="#triple">Triple</a></li>
-                <li class="bed-item"><a href="#quad">Quad</a></li>
-                <li class="bed-item"><a href="#twin">Twin</a></li>
-                <li class="bed-item"><a href="#queen">Queen</a></li>
-                <li class="bed-item"><a href="#king">King</a></li>
+                {{#each rtype}}
+                <li class="bed-item"><a href="#{{troom_id}}">{{capitalize roomtype}}</a></li>
+                {{/each}}
               </ul>
             </nav>
           </div>
+
           <div class="content-info-array">
-            <div class="content-info" id="individual">
+            {{#each rtype}}
+            <div class="content-info" id="{{troom_id}}">
               <div class="bedroom-photo">
-                <img src="/img/individual-room.jpeg" alt="">
+                <img src="uploads/{{pathname}}" alt="">
               </div>
               <div class="bedroom-details">
-                <h2>Individual</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam suscipit explicabo, quia eos minus a
-                </p>
+                <h2>{{capitalize roomtype}}</h2>
+                <p>{{capitalize description}}</p>
                 <div class="icons-info">
-                  <span><img src="/img/client-quantity.svg" width="32px" height="32px">1</span>
-                  <span><img src="/img/bed-quantity.svg" width="32px" height="32px">1</span>
+                  <span><img src="/img/client-quantity.svg" width="32px" height="32px">{{capacity}}</span>
+                  <span><img src="/img/bed-quantity.svg" width="32px" height="32px">{{nbeds}}</span>
+                  <span><img src="/img/price.svg" width="32px" height="32px">{{price}}</span>
                 </div>
               </div>
             </div>
-
-            <div class="content-info hide-panel" id="double">
-              <div class="bedroom-photo">
-                <img src="/img/double-room.jpg" alt="">
-              </div>
-              <div class="bedroom-details">
-                <h2>Double</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam suscipit explicabo, quia eos minus a
-                  sit. </p>
-                <div class="icons-info">
-                  <span><img src="/img/client-quantity.svg" width="32px" height="32px">2</span>
-                  <span><img src="/img/bed-quantity.svg" width="32px" height="32px">1 - 2</span>
-                </div>
-              </div>
-            </div>
-            <div class="content-info hide-panel" id="triple">
-              <div class="bedroom-photo">
-                <img src="/img/triple-room.jpg" alt="">
-              </div>
-              <div class="bedroom-details">
-                <h2>Triple</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam suscipit explicabo, quia eos minus a
-                  sit. </p>
-                <div class="icons-info">
-                  <span><img src="/img/client-quantity.svg" width="32px" height="32px">3</span>
-                  <span><img src="/img/bed-quantity.svg" width="32px" height="32px">2 - 4</span>
-                </div>
-              </div>
-            </div>
-            <div class="content-info hide-panel" id="quad">
-              <div class="bedroom-photo">
-                <img src="/img/quad-room.jpg" alt="">
-              </div>
-              <div class="bedroom-details">
-                <h2>Quad</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam suscipit explicabo, quia eos minus a
-                  sit. </p>
-                <div class="icons-info">
-                  <span><img src="/img/client-quantity.svg" width="32px" height="32px">4</span>
-                  <span><img src="/img/bed-quantity.svg" width="32px" height="32px">2 - 4</span>
-                </div>
-              </div>
-            </div>
-            <div class="content-info hide-panel" id="twin">
-              <div class="bedroom-photo">
-                <img src="/img/twin-room.jpg" alt="">
-              </div>
-              <div class="bedroom-details">
-                <h2>Twin</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam suscipit explicabo, quia eos minus a
-                  sit. </p>
-                <div class="icons-info">
-                  <span><img src="/img/client-quantity.svg" width="32px" height="32px">2 - 4</span>
-                  <span><img src="/img/bed-quantity.svg" width="32px" height="32px">2</span>
-                </div>
-              </div>
-            </div>
-            <div class="content-info hide-panel" id="queen">
-              <div class="bedroom-photo">
-                <img src="/img/queen-room.jpg" alt="">
-              </div>
-              <div class="bedroom-details">
-                <h2>Queen</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam suscipit explicabo, quia eos minus a
-                  sit.</p>
-                <div class="icons-info">
-                  <span><img src="/img/client-quantity.svg" width="32px" height="32px">1 - 2</span>
-                  <span><img src="/img/bed-quantity.svg" width="32px" height="32px">1</span>
-                </div>
-              </div>
-            </div>
-            <div class="content-info hide-panel" id="king">
-              <div class="bedroom-photo">
-                <img src="/img/king-room.jpg" alt="">
-              </div>
-              <div class="bedroom-details">
-                <h2>King</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam suscipit explicabo, quia eos minus a
-                  sit.</p>
-                <div class="icons-info">
-                  <span><img src="/img/client-quantity.svg" width="32px" height="32px">1 - 2</span>
-                  <span><img src="/img/bed-quantity.svg" width="32px" height="32px">1</span>
-                </div>
-              </div>
-            </div>
-
+            {{/each}}
           </div>
         </div>
-      </div>
+        {{!-- RESERVATION --}}
 
-      <div class="reservation-wrapper" id="contacto">
-        <div class="reservation-wrapper-details">
-          <h2>Contact us</h2>
-          <p>MyHotels Malta Head Office: <br>
-            1 Ross Street, Paceville <br>
-            St Julians, Malta <br>
-            Tel: +356 2137 8785</p>
-          <button class="btn btn-success btn-lg" id="btn-make">Make your reservation</button>
-        </div>
-        {{!-- FORMULARIO --}}
-        <div class="reservation-wrapper-reservation">
-          <form action="/" method="POST">
-            <div class="form-row">
-              <div class="form-group m-2">
-                <label>Full name</label>
-                <input type="text" class="form-control" name="fullname" placeholder="Full name" autofocus>
-              </div>
-              <div class="form-group m-2">
-                <label for="validationTooltipComboBox">Type</label>
-                <select class="custom-select form-control" name="selec">
-                  <option selected>Select your type</option>
-                  <option value="1">Individual</option>
-                  <option value="2">Double</option>
-                  <option value="3">Triple</option>
-                  <option value="3">Quad</option>
-                  <option value="4">Twin</option>
-                  <option value="5">Queen</option>
-                  <option value="6">King</option>
-                </select>
-              </div>
-              <div class="form-group m-2">
-                <label for="check-in">Check-In</label>
-                <input class="form-control" id="check-in" placeholder="Check-In" required />
-              </div>
+
+          <div class="reservation-wrapper" id="contacto">
+            <div class="reservation-wrapper-details">
+              <h2>Contact us</h2>
+              <p>MyHotels Malta Head Office: <br>
+                1 Ross Street, Paceville <br>
+                St Julians, Malta <br>
+                Tel: +356 2137 8785</p>
+              <button class="btn btn-success btn-lg" id="btn-make">Make your reservation</button>
             </div>
-            {{!-- SECOND ROW --}}
-            <div class="form-row">
-              <div class="form-group m-2">
-                <label>Phone Number</label>
-                <input type="text" class="form-control" placeholder="Phone Number"
-                  required>
-              </div>
-              <div class="form-group m-2">
-                <label for="validationTooltipPeople">People</label>
-                <select class="custom-select form-control" required>
-                  <option selected>Select Quantity</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                  <option value="4">Four</option>
-                  <option value="5">Over Four</option>
-                </select>
-              </div>
-              <div class="form-group m-2">
-                <label for="check-out">Check-Out</label>
-                <input class="form-control" id="check-out" placeholder="Check-Out" required/>
-              </div>
+            {{!-- FORMULARIO --}}
+            <div class="reservation-wrapper-reservation">
+              <form action="/" method="POST">
+                <div class="form-row">
+                  <div class="form-group m-2">
+                    <label>Full name</label>
+                    <input name="fullname" type="text" class="form-control" placeholder="Full name" autofocus required>
+                  </div>
+                  <div class="form-group m-2">
+                    <label>Type</label>
+                    <select name="troom" id="troom_selection" class="custom-select form-control" required>
+                      <option selected>Select your type</option>
+                      {{#each rtype}}
+                      <option value="{{troom_id}}">{{capitalize roomtype}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                  <div class="form-group m-2">
+                    <label for="check-in">Check-In</label>
+                    <input name="checkin" class="form-control" id="check-in" placeholder="Check-In" required />
+                  </div>
+                </div>
+                {{!-- SECOND ROW --}}
+                <div class="form-row">
+                  <div class="form-group m-2">
+                    <label>Phone Number</label>
+                    <input name="phonenumber" type="text" class="form-control" placeholder="Phone Number" required>
+                  </div>
+                  <div class="form-group m-2">
+                    <label>People</label>
+                    <input name="peoplequantity" class="form-control" placeholder="Enter a number"  type="number" min="1" max="15" required>
+
+                  </div>
+                  <div class="form-group m-2">
+                    <label for="check-out">Check-Out</label>
+                    <input name="checkout" class="form-control" id="check-out" placeholder="Check-Out" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-secondary btn-lg m-1" id="btn-back">Back</button>
+                  <button id="btn-send" class="btn btn-success btn-lg m-1">Submit</button>
+                </div>
+              </form>
             </div>
-            <div class="form-group">
-            <button class="btn btn-success btn-lg m-1">Submit</button>
-            <button class="btn btn-secondary btn-lg m-1" id="btn-back">Back</button>
+            {{#if success}}
+            <div class="form-group ticket-active">
+                {{#each reservation}}
+                  <h1 id="ticket">Ticket: {{num_ticket}}</h1>
+                  <h2 id="total">Total: {{total}}</h2>
+                {{/each}}
+                <h4>Please take a note of this ticket <br> you will give us its number when you arrive at Best Western</h4>
+                <h4><strong>*Remember this ticket is valid only 24 hours*</strong></h4>
+                <button id="got-it" class="btn btn-success btn-lg">Got it!</button>
             </div>
-          </form>
-        </div>
-      </div>
+            {{/if}}
+          </div>
   </main>
   <footer>
     <div class="derechos-reservados">
@@ -270,105 +184,4 @@
       </div>
     </div>
   </footer>
-  <script>
-    $(function () {
-      $('#check-in').datepicker({
-        numberOfMonths: 1,
-        dateFormat: 'DD,d MM,yy',
-        onSelect: function (selectdate) {
-          var dt = new Date(selectdate);
-          dt.setDate(dt.getDate() + 1)
-          $('#check-out').datepicker("option", "minDate", dt);
-        }
-      });
-      $('#check-out').datepicker({
-        numberOfMonths: 1,
-        dateFormat: 'DD,d MM,yy',
-        onSelect: function (selectdate) {
-          var dt = new Date(selectdate);
-          dt.setDate(dt.getDate() - 1)
-          $('#check-in').datepicker("option", "maxDate", dt);
-        }
-      });
-
-    });
-
-    const header = document.querySelector("header");
-    const main = document.querySelector(".bienvenidos");
-
-
-    const sectionOneOptions = {
-      //Adding some margin to my navbar so that applies the effect before hits .bienvenidos div
-      rootMargin: "-100px 0px 0px 0px"
-    }
-    //todo: Nav animation
-    const sectionOneObserver = new IntersectionObserver(function (entries, sectionOneObserver) {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) {
-            console.log('scroll')
-            $('header').addClass('nav-scrolled');
-          } else {
-            console.log('no scrol')
-            $('header').removeClass('nav-scrolled');
-          }
-        });
-      },
-      sectionOneOptions);
-    sectionOneObserver.observe(header);
-
-
-    //todo: Nav bar animation ul HOME
-    $('.navigation .item .enlace').on('click', function () {
-      $('.enlace').removeClass('active')
-      $(this).addClass('active')
-    })
-
-    //todo: services animation
-    const portfolioItems = document.getElementsByClassName('descrip-servicio')
-    Object.keys(portfolioItems).forEach(elem => {
-      portfolioItems[elem].addEventListener('mouseover', () => {
-        portfolioItems[elem].classList.add('darken--description');
-      })
-      portfolioItems[elem].addEventListener('mouseout', () => {
-        portfolioItems[elem].classList.remove('darken--description');
-      })
-    })
-
-    $('.bedroom-nav a').on('click', function () {
-      $('.bedroom-nav a').removeClass('active-item');
-      $(this).addClass('active-item');
-    })
-
-    // Animation hotel rooms
-    $(function () {
-      //Removing class hide, so its showing first element
-      $('.content-info-array .content-info').show()
-
-      $('.bed-items li a').on('click', function () {
-        $('.content-info-array .content-info').hide()
-        var enlace = $(this).attr('href');
-        $(enlace).removeClass('hide-panel');
-        $(enlace).show(200);
-
-        return false //Not to load again the page after click on a tag
-      })
-    })
-
-    $('.reservation-wrapper-reservation').hide()
-
-    $(function () {
-      $('.reservation-wrapper-details #btn-make').on('click', function () {
-        $('.reservation-wrapper-details').hide()
-        $('.reservation-wrapper-reservation').show(500)
-      })
-    })
-
-    $(function () {
-      $('.reservation-wrapper-reservation #btn-back').on('click', function () {
-        $('.reservation-wrapper-reservation').hide();
-        $('.reservation-wrapper-details').show(500);
-        return false
-      })
-    })
-  </script>
 </body>
