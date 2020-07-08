@@ -8,8 +8,7 @@ passport.use('local.signin',new localstrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, async(req,username,password,done)=>{
-    const rows = await pool.query("select * from worker where username = ? and account=1",[username]);
-    console.log(rows.length);
+    const rows = await pool.query("SELECT `worker`.*, `role`.* FROM `worker` LEFT JOIN `role` ON `worker`.`role` = `role`.`role_id` WHERE `worker`.`username` = ? AND `worker`.`status` = '1'",[username]);
     if (rows.length > 0){
         const user = rows[0];
         if(user.password === password){
@@ -29,6 +28,6 @@ passport.serializeUser((user,done)=>{
 }); 
 
 passport.deserializeUser(async(id,done)=>{
-    const rows = await pool.query('select * from worker where worker_id=?',[id]);
+    const rows = await pool.query("SELECT `worker`.*, `role`.* FROM `worker` LEFT JOIN `role` ON `worker`.`role` = `role`.`role_id` where worker_id=?",[id]);
     done(null,rows[0]);
 })

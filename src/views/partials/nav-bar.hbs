@@ -1,7 +1,7 @@
-
 {{#if user}}
 <div id="bar-nav" class="nav-body inactive-nav">
   <ul class="nav vertical-nav">
+    {{#if user.booking includeZero=false}}
     <li class="nav-item">
       <a class="nav-link dropdown-father" href="#">
         <div class="nav-op">
@@ -27,6 +27,9 @@
         </li>
       </ul>
     </li>
+    {{/if}}
+
+    {{#if user.booking includeZero=false}}
     <li class="nav-item">
       <a class="nav-link dropdown-father" href="#">
         <div class="nav-op">
@@ -37,6 +40,12 @@
       </a>
       <ul class="nav dropdown-child">
         <li class="nav-item" onclick="">
+          <a class="nav-link" href="/reservation">
+            <div class="nav-op">
+              <i class="fas fa-angle-right"></i>
+              <label>Reservation</label>
+            </div>
+          </a>
           <a class="nav-link" href="/booking">
             <div class="nav-op">
               <i class="fas fa-angle-right"></i>
@@ -52,6 +61,8 @@
         </li>
       </ul>
     </li>
+    {{/if}}
+    {{#if user.guest includeZero=false}}
     <li class="nav-item">
       <a class="nav-link" href="/guest">
         <div class="nav-op">
@@ -60,6 +71,8 @@
         </div>
       </a>
     </li>
+    {{/if}}
+    {{#if user.staff includeZero=false}}
     <li class="nav-item">
       <a class="nav-link dropdown-father" href="#">
         <div class="nav-op">
@@ -85,6 +98,8 @@
         </li>
       </ul>
     </li>
+    {{/if}}
+    {{#if user.staff includeZero=false}}
     <li class="nav-item">
       <a class="nav-link dropdown-father" href="#">
         <div class="nav-op">
@@ -110,6 +125,8 @@
         </li>
       </ul>
     </li>
+    {{/if}}
+    {{#if user.product includeZero=false}}
     <li class="nav-item">
       <a class="nav-link dropdown-father" href="#">
         <div class="nav-op">
@@ -135,6 +152,8 @@
         </li>
       </ul>
     </li>
+    {{/if}}
+    {{#if user.porder includeZero=false}}
     <li class="nav-item">
       <a class="nav-link" href="/purchase-order">
         <div class="nav-op">
@@ -143,6 +162,8 @@
         </div>
       </a>
     </li>
+    {{/if}}
+    {{#if user.invreceipt includeZero=false}}
     <li class="nav-item">
       <a class="nav-link" href="/inv-receipt">
         <div class="nav-op">
@@ -151,6 +172,8 @@
         </div>
       </a>
     </li>
+    {{/if}}
+    {{#if user.invissue includeZero=false}}
     <li class="nav-item">
       <a class="nav-link" href="/inv-issue">
         <div class="nav-op">
@@ -159,6 +182,8 @@
         </div>
       </a>
     </li>
+    {{/if}}
+    {{#if user.cashmodule includeZero=false}}
     <li class="nav-item">
       <a class="nav-link" href="/cash-module">
         <div class="nav-op">
@@ -167,14 +192,8 @@
         </div>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/reservation">
-        <div class="nav-op">
-          <i class="nav-icon fas fa-address-book" aria-hidden="true"></i>
-          <label>Reservation</label>
-        </div>
-      </a>
-    </li>
+    {{/if}}
+    {{#if user.setting includeZero=false}}
     <li class="nav-item">
       <a class="nav-link" href="/setting">
         <div class="nav-op">
@@ -183,6 +202,7 @@
         </div>
       </a>
     </li>
+    {{/if}}
   </ul>
 </div>
 {{/if}}
