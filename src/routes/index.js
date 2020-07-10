@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const { id } = req.params;
-  const { fullname, phonenumber, peoplequantity, checkin, checkout, troom } = req.body;
+  const { peoplequantity, checkin, checkout, troom, firstname,lastname,doctype,docnumber,state,city,address,email,phone,cellphone } = req.body;
   const validFechaInicio = helpers.formatdb(checkin)
   const validFechaSalida = helpers.formatdb(checkout)
   //*troom returns an id value from selected element
@@ -34,52 +34,19 @@ router.post('/', async (req, res) => {
   const lastid = await pool.query("SELECT AUTO_INCREMENT as id FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'reservation'");
 
   /* randomTicket = await ""+randomTicket+lastid; */
-  const Ticket = await parseInt("" + randomTicket + lastid[0].id);
-
-  console.log(Ticket)
-
-
-  // Array.prototype.forEach.call(gettingTicket[0].num_ticket.children,elem =>{
-  //   while (true){
-  //     if(randomTicket!=elem){
-  //       return randomTicket;
-  //     }
-  //     randomTicket = Math.floor((Math.random()*5)+1);
-  //   }
-  // })
-  /*  gettingTicket.forEach(elem=>{
-     return elem[0];
-   }) */
-
-  /* console.log(Ticket); */
-  const newLink = {
-    num_ticket: Ticket,
-    fullname,
-    phonenumber,
-    peoplequantity,
-    checkin: validFechaInicio,
-    checkout: validFechaSalida,
-    total,
-    troom_id: troom, //*it returns already the troom's id
-  }
-  /* console.log(newLink); */
-  await pool.query('INSERT INTO reservation set ?', [newLink], async (err, resp, fields) => {
-    if (err) {
-      req.flash('failure', 'An error has occured')
-      res.redirect('/')
-    }
-    else {
-      var resid = resp.insertId;
-      const gettingTicket = await pool.query('SELECT num_ticket FROM reservation where id_reservation=?', [resid]);
-      req.flash('success', 'Reservation was made successfully')
-      res.redirect('/')
-    }
-
-  })
-
-
-
-
+  const ticket = await parseInt("" + randomTicket + lastid[0].id);  
+  //*REGISTERING GUEST
+  await pool.query('call insert_reservation(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [firstname, lastname, doctype, docnumber, state,city,address,email,phone,cellphone,validFechaInicio,validFechaSalida,ticket,peoplequantity,total,troom], async (err, resp, fields) => {
+        if (err) {
+            req.flash('failure', "Could't register guest" + err);
+            res.redirect('/');
+        }
+        else {
+            req.flash('success', 'Reservation successfully registered');
+            res.redirect('/');
+        }
+    });
+    console.log('finished inserting')
 })
 
 
