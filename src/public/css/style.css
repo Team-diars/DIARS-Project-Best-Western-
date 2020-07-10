@@ -365,13 +365,13 @@ textarea {
     margin-top: 20px;
 }
 .table-fixed::-webkit-scrollbar{
-    width: 2px;
+    width: 5px;
 }
 .table-fixed::-webkit-scrollbar-track{
     background-color: transparent;
 }
 .table-fixed::-webkit-scrollbar-thumb{
-    background-color: #464646;
+  background-color: rgba(245, 245, 245, 0.762);
 }
 .overlay{
     width: 100vw;
