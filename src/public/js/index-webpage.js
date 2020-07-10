@@ -125,3 +125,50 @@ $(function(){
   })
   return false;
 })
+
+
+//Json states
+try {
+  window.onload = function () {
+      var select_state = document.getElementById("select-state");
+      //Cargar json 
+      fetch('/json/US_States_and_Cities.json').then(function (res) {
+          return res.json();
+      }).then(function (data) {
+          //Mostrar lista de estados en select
+          for (x in data) {
+              option = document.createElement('option');
+              option.text = x;
+              option.value = x;
+              select_state.add(option);
+          }
+      });
+  };
+} catch (error) {
+}
+//Json cities
+try {
+  document.getElementById('select-state').addEventListener('input', function () {
+      var select_state = document.getElementById("select-state");
+      var value_state = document.getElementById("select-state").value;
+      if (value_state != '') {
+          var select_city = document.getElementById("select-city");
+          //Remover ciudades de select - options al elegir nuevo estado
+          for (var i = select_city.length; i >= 1; i--) {
+              select_city.remove(i);
+          }
+          fetch('/json/US_States_and_Cities.json').then(function (res) {
+              return res.json();
+          }).then(function (data) {
+              var data_state = data[value_state];
+              for (j = 0; j < data_state.length; j++) {
+                  option = document.createElement('option');
+                  option.text = data_state[j];
+                  option.value = data_state[j];
+                  select_city.add(option);
+              }
+          });
+      }
+  });
+} catch (error) {
+}

@@ -20,8 +20,8 @@
   }
   & .text-boxes{
     display: grid;
-    grid-template-columns: 33% 33% 33%;
-    grid-template-rows: 33% 33% 33%;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 25% 25% 25% 25%;
     // row-gap: 4px;
     // column-gap: 4px;
     & input{
@@ -32,4 +32,33 @@
       grid-column: 2; //Positionate at 2nd column
     }
   }
+  // & fieldset{
+  //   border-width: 2px;
+  //   border-style: groove;
+  //   border-image: initial;
+  // }
+}
+fieldset{
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    border-radius: 5px;
+    min-inline-size: min-content;
+    border-width: 3px;
+    border-style: groove;
+    border-color: threedface;
+    border-image: initial;
+}
+legend{
+    box-sizing: border-box;
+    // color: inherit;
+    // display: table;
+    width: 30%;
+    // max-width: 100%;
+    padding: 0;
+    white-space: normal;
 }
