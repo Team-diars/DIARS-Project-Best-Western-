@@ -111,25 +111,89 @@
         {{!-- RESERVATION --}}
 
 
-          <div class="reservation-wrapper" id="contacto">
-            <div class="reservation-wrapper-details">
-              <h2>Contact us</h2>
-              <p>{{setting.name}} <br>
-                State {{setting.state}},City {{setting.city}} <br>
-                Address {{setting.address}} <br>
-                Tel: {{setting.phone}}</p>
-              <button class="btn btn-success btn-lg" id="btn-make">Make your reservation</button>
+        <div class="reservation-wrapper" id="contacto">
+          <div class="reservation-wrapper-details">
+            <h2>Contact us</h2>
+            <p>{{setting.name}} <br>
+              State {{setting.state}},City {{setting.city}} <br>
+              Address {{setting.address}} <br>
+              Tel: {{setting.phone}}</p>
+            <button class="btn btn-success btn-lg" id="btn-make">Make your reservation</button>
+          </div>
+          {{!-- FORMULARIO --}}
+          <div class="reservation-wrapper-reservation">
+            <div class="form-group">
+              <h3><strong>Please fill your information</strong></h3>
             </div>
-            {{!-- FORMULARIO --}}
-            <div class="reservation-wrapper-reservation">
-              <form action="/" method="POST">
+            <form action="/" method="POST">
+              {{!-- FIRST ROW --}}
+              <fieldset class="form-group personal-info">
+                <legend>Personal Information</legend>
                 <div class="form-row">
                   <div class="form-group m-2">
-                    <label>Full name</label>
-                    <input name="fullname" type="text" class="form-control" placeholder="Full name" autofocus required>
+                    <label>First name*</label>
+                    <input name="firstname" type="text" class="form-control" placeholder="First name" autofocus
+                      required>
                   </div>
                   <div class="form-group m-2">
-                    <label>Type</label>
+                    <label>Last name*</label>
+                    <input name="lastname" type="text" class="form-control" placeholder="Last name" required>
+                  </div>
+                  <div style="width:207.6px" class="form-group m-2">
+                    <label>Type*</label>
+                    <select style="height:38px" class="form-control" size="1" name="doctype" id="select-doc"
+                      required>
+                      <option value="">Select type</option>
+                      <option value="Driver license">Driver license</option>
+                      <option value="ID card">ID card</option>
+                      <option value="Passport">Passport</option>
+                    </select>
+                  </div>
+                  <div class="form-group m-2">
+                    <label>Document Number*</label>
+                    <input name="docnumber" type="text" class="form-control" placeholder="Document" required>
+                  </div>
+                </div>
+                {{!-- SECOND ROW --}}
+                <div class="form-row">
+                  <div style="width:207.6px" class="form-group m-2">
+                    <label>State*</label>
+                    <select style="height:38px" class="form-control" size="1" name="state" id="select-state" required>
+                      <option value="">Select state</option>
+                    </select>
+                  </div>
+                  <div style="width:207.6px" class="form-group m-2">
+                    <label>City*</label>
+                    <select style="height:38px" class="form-control" size="1" name="city" id="select-city" required>
+                      <option value="">Select city</option>
+                    </select>
+                  </div>
+                  <div class="form-group mt-2 mb-2 col-lg">
+                    <label>Address*</label>
+                    <input name="address" class="form-control" placeholder="Address" type="text" required>
+                  </div>
+                </div>
+              <div class="form-row">
+                <div class="form-group mt-2 mb-2 col-lg">
+                  <label>E-mail*</label>
+                  <input name="email" class="form-control" placeholder="Type your E-mail" type="text" required>
+                </div>
+                <div class="form-group m-2">
+                  <label>Tel</label>
+                  <input name="phone" class="form-control" placeholder="Telephone" type="text" required>
+                </div>
+                <div class="form-group m-2">
+                  <label>Phone Number</label>
+                  <input name="cellphone" class="form-control" placeholder="Cellphone" type="text" required>
+                </div>
+              </div>
+              </fieldset>
+
+              <fieldset class="form-group personal-info">
+                <legend>Room Reservation</legend>
+                <div class="form-row">
+                <div class="form-group m-2">
+                    <label>Type*</label>
                     <select name="troom" id="troom_selection" class="custom-select form-control" required>
                       <option selected>Select your type</option>
                       {{#each rtype}}
@@ -137,45 +201,40 @@
                       {{/each}}
                     </select>
                   </div>
-                  <div class="form-group m-2">
-                    <label for="check-in">Check-In</label>
-                    <input name="checkin" class="form-control" id="check-in" placeholder="Check-In" required />
-                  </div>
+                <div class="form-group m-2">
+                  <label>People*</label>
+                  <input style="width:207.6px" name="peoplequantity" class="form-control" placeholder="Enter a number"
+                    type="number" min="1" max="15" required>
                 </div>
-                {{!-- SECOND ROW --}}
-                <div class="form-row">
-                  <div class="form-group m-2">
-                    <label>Phone Number</label>
-                    <input name="phonenumber" type="text" class="form-control" placeholder="Phone Number" required>
-                  </div>
-                  <div class="form-group m-2">
-                    <label>People</label>
-                    <input name="peoplequantity" class="form-control" placeholder="Enter a number"  type="number" min="1" max="15" required>
-
-                  </div>
-                  <div class="form-group m-2">
-                    <label for="check-out">Check-Out</label>
-                    <input name="checkout" class="form-control" id="check-out" placeholder="Check-Out" required />
-                  </div>
+                <div class="form-group m-2">
+                  <label for="check-in">Check-In*</label>
+                  <input name="checkin" class="form-control" id="check-in" placeholder="Check-In" required />
                 </div>
-                <div class="form-group">
-                  <button class="btn btn-secondary btn-lg m-1" id="btn-back">Back</button>
-                  <button id="btn-send" class="btn btn-success btn-lg m-1">Submit</button>
+                <div class="form-group m-2">
+                  <label for="check-out">Check-Out*</label>
+                  <input name="checkout" class="form-control" id="check-out" placeholder="Check-Out" required />
                 </div>
-              </form>
-            </div>
-            {{#if success}}
-            <div class="form-group ticket-active">
-                {{#each reservation}}
-                  <h1 id="ticket">Ticket: {{num_ticket}}</h1>
-                  <h2 id="total">Total: {{total}}</h2>
-                {{/each}}
-                <h4>Please take a note of this ticket <br> you will give us its number when you arrive at Best Western</h4>
-                <h4><strong>*Remember this ticket is valid only 24 hours*</strong></h4>
-                <button id="got-it" class="btn btn-success btn-lg">Got it!</button>
-            </div>
-            {{/if}}
+              </div>
+              </fieldset>
+              
+              <div class="form-group">
+                <button class="btn btn-secondary btn-lg m-1" id="btn-back">Back</button>
+                <button id="btn-send" class="btn btn-success btn-lg m-1">Submit</button>
+              </div>
+            </form>
           </div>
+          {{#if success}}
+          <div class="form-group ticket-active">
+            {{#each reservation}}
+            <h1 id="ticket">Ticket: {{num_ticket}}</h1>
+            <h2 id="total">Total: {{total}}</h2>
+            {{/each}}
+            <h4>Please take a note of this ticket <br> you will give us its number when you arrive at Best Western</h4>
+            <h4><strong>*Remember this ticket is valid only 24 hours*</strong></h4>
+            <button id="got-it" class="btn btn-success btn-lg">Got it!</button>
+          </div>
+          {{/if}}
+        </div>
   </main>
   <footer>
     <div class="derechos-reservados">
