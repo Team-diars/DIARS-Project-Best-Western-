@@ -17,6 +17,7 @@ router.get('/', isnotlogedin, async (req, res) => {
     }
     else {
         const book = await pool.query("SELECT `booked`.`booked_id`,`booked`.`booked_cod`, `huesped`.`firstname`, `huesped`.`lastname`, `room`.`number`, `booked`.`datein`, `booked`.`dateout`, `booked`.`price`, `booked`.`status` FROM `booked` LEFT JOIN `huesped` ON `booked`.`guest_id` = `huesped`.`guest_id` LEFT JOIN `room` ON `booked`.`room_id` = `room`.`room_id` ORDER BY `booked`.`status` DESC");
+        
         res.render('booked-room/list', { book: book });
     }
 
@@ -26,7 +27,7 @@ router.get('/add', isnotlogedin, async (req, res) => {
     if (req.user.booking === 0) {
         res.redirect('/home');
     } else {
-        const guest = await pool.query("select * from huesped ");
+        const guest = await pool.query("select * from huesped where status=1");
         const rate = await pool.query("select tax from setting");
         const room = await pool.query("SELECT `room`.`room_id`, `room`.`number`, `t_room`.`roomtype`, `t_room`.`price`, `t_room`.`bedtype`, `t_room`.`nbeds`, `t_room`.`capacity`, `room`.`floor` FROM `room` LEFT JOIN `t_room` ON `room`.`roomtype` = `t_room`.`troom_id` WHERE `room`.`status` = '1'");
         const troom = await pool.query("select * from t_room where status=1");
@@ -55,6 +56,9 @@ router.post('/add', isnotlogedin, async (req, res) => {
         };
         newbooked.datein = helpers.formatdb(newbooked.datein);
         newbooked.dateout = helpers.formatdb(newbooked.dateout);
+        
+        await pool.query('update reservation set status="FINISHED" where status="PENDING"')
+        
         await pool.query('call `insert_booked`(?,?,?,?,?,?,?,?,?,?,?,@out_id); select @out_id as id',
             [newbooked.worker_id, newbooked.guest_id, newbooked.datein, newbooked.dateout, newbooked.price, newbooked.cant, newbooked.room_id, newbooked.type, newbooked.total, newbooked.paid, newbooked.taxrate]
             , async (err, resp, fields) => {
