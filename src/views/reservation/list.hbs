@@ -15,20 +15,22 @@
                         </a>
                     </div>
                     <div class="form-group row mx-auto mt-2">
-                        <input class="form-control" type="number" id="searchbar" placeholder="Filter by room number">
+                        <input class="form-control" type="number" id="searchbar" placeholder="Filter by ticket number">
                     </div>
-                    <div class="row mx-auto mt-2">
+
+                    <div class="row mx-auto mt-2 table-fixed table-fixed-2">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
+                                    <th scope="col">Num.Ticket</th>
                                     <th scope="col">Full Name</th>
-                                    <th scope="col">Phone Number</th>
                                     <th scope="col">People</th>
                                     <th scope="col">Check-in</th>
                                     <th scope="col">Check-out</th>
                                     <th scope="col">Total</th>
                                     <th scope="col">Roomtype</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
@@ -36,14 +38,20 @@
                                 {{#each reservation}}
                                 <tr>
                                     <th scope="row">{{index @index }}</th>
-                                    <td>{{fullname}}</td>
-                                    <td>{{phonenumber}}</td>
+                                    <td>{{num_ticket}}</td>
+                                    <td>{{firstname}} {{lastname}}</td>
                                     <td>{{peoplequantity}}</td>
                                     <td>{{formatday checkin}}</td>
                                     <td>{{formatday checkout}}</td>
                                     <td>{{total}}</td>
                                     <td>{{roomtype}}</td>
+                                    <td id="status">{{status}}</td>
                                     <td>
+                                        <a href="reservation/checked/{{id_reservation}}">
+                                            <button id="btnCheck" name="btnCheck" type="button" class="btn btn-success">
+                                                <i class="fa fa-check" aria-hidden="true"></i>
+                                            </button>
+                                        </a>
                                         <a href="room/view/{{room_id}}">
                                             <button type="button" class="btn btn-secondary">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
