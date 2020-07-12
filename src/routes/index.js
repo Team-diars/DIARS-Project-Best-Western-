@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
   /* randomTicket = await ""+randomTicket+lastid; */
   const ticket = await parseInt("" + randomTicket + lastid[0].id);  
   //*REGISTERING GUEST
-  await pool.query('call insert_reservation(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [firstname, lastname, doctype, docnumber, state,city,address,email,phone,cellphone,validFechaInicio,validFechaSalida,ticket,peoplequantity,total,troom], async (err, resp, fields) => {
+  await pool.query('call insert_reservation(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [firstname, lastname, doctype, docnumber, state,city,address,email,phone,cellphone,validFechaInicio,validFechaSalida,randomTicket,peoplequantity,total,troom], async (err, resp, fields) => {
         if (err) {
             req.flash('failure', "Could't register guest" + err);
             res.redirect('/');
