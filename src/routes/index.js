@@ -29,16 +29,23 @@ router.post('/', async (req, res) => {
   const troom_price = await pool.query(`SELECT price FROM t_room WHERE roomtype LIKE '${string_troom[0].roomtype}'`)
 
   //*Its same thing with troom_price, we select first element and price value from it
-  const total = troom_price[0].price * peoplequantity;
+  const tax = await pool.query(' SELECT `setting`.`tax` FROM `setting`')
+  const date1 = new Date(validFechaInicio)
+  const date2 = new Date(validFechaSalida)
+  const Difference_In_Time = date2.getTime() - date1.getTime(); 
+  const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+  //*Its same thing with troom_price, we select first element and price value from it
+  const sub_total = tax[0].tax*(troom_price[0].price * Difference_In_Days);
+  const total = (troom_price[0].price * Difference_In_Days)+sub_total;
   const randomTicket = Math.floor((Math.random() * 9999999) + 9999990);
   const lastid = await pool.query("SELECT AUTO_INCREMENT as id FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'reservation'");
 
   /* randomTicket = await ""+randomTicket+lastid; */
-  const ticket = await parseInt("" + randomTicket + lastid[0].id);  
+  // const ticket = await parseInt("" + randomTicket + lastid[0].id);  
   //*REGISTERING GUEST
   await pool.query('call insert_reservation(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [firstname, lastname, doctype, docnumber, state,city,address,email,phone,cellphone,validFechaInicio,validFechaSalida,randomTicket,peoplequantity,total,troom], async (err, resp, fields) => {
         if (err) {
-            req.flash('failure', "Could't register guest" + err);
+            req.flash('failure', "Could't register reservation" + err);
             res.redirect('/');
         }
         else {
