@@ -136,9 +136,9 @@ router.get('/delete/:troom_id', isnotlogedin, async (req, res) => {
         res.redirect('/home');
     } else {
         const { troom_id } = req.params;
-        await pool.query('update t_room set status=0 where troom_id=?', [troom_id], (err, resp, fields) => {
+        await pool.query('call delete_validation(?)', [troom_id], (err, resp, fields) => {
             if (err) {
-                req.flash('failure', "Could'nt eliminate room type");
+                req.flash('failure', `There's still rooms with that type`);
                 res.redirect('/roomtype');
             }
             else {
