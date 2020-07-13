@@ -37,11 +37,11 @@ helpers.room_status = (value) => {
 helpers.book_status = (value) => {
   switch (value) {
     case 0:
-      return "Cancelled"; break;    
+      return "Finished"; break;    
     case 1:
       return "Success"; break;
-    case 2:
-      return "Finished"; break;
+    // case 2:
+    //   return "Finished"; break;
   }
 };
 
