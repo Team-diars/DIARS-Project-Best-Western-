@@ -349,20 +349,22 @@ CREATE TABLE IF NOT EXISTS `reserva` (
 DROP TABLE IF EXISTS `reservation`;
 CREATE TABLE IF NOT EXISTS `reservation` (
   `id_reservation` int(11) NOT NULL AUTO_INCREMENT,
-  `num_ticket` int(11) NOT NULL,
-  `fullname` varchar(100) NOT NULL,
-  `phonenumber` varchar(10) NOT NULL,
-  `peoplequantity` int(11) NOT NULL,
   `checkin` date DEFAULT NULL,
   `checkout` date DEFAULT NULL,
+  `num_ticket` int(11) NOT NULL,
+  `peoplequantity` int(11) NOT NULL,
   `total` double DEFAULT NULL,
   `troom_id` int(11) DEFAULT NULL,
+  `guest_id` int(11),
   `status` varchar(20) DEFAULT 'UNPAID',
   PRIMARY KEY (`id_reservation`),
   KEY `fk_troom` (`troom_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+--checkin,checkout,num_ticket,peoplequantity,total,troom_id,guest_id
 -- --------------------------------------------------------
+
+ALTER TABLE reservation
+ADD CONSTRAINT `fk_guestid` FOREIGN KEY (`guest_id`) REFERENCES `huesped` (`guest_id`);
 
 --
 -- Estructura de tabla para la tabla `role`
@@ -582,7 +584,7 @@ ALTER TABLE `product`
 --
 ALTER TABLE `reservation`
   ADD CONSTRAINT `fk_troom` FOREIGN KEY (`troom_id`) REFERENCES `t_room` (`troom_id`);
-
+  
 --
 -- Filtros para la tabla `room`
 --
@@ -600,3 +602,74 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_reservation`(IN `in_firstname` VARCHAR(45), IN `in_lastname` VARCHAR(45), IN `in_doctype` VARCHAR(45), IN `in_docnumber` VARCHAR(10), IN `in_state` VARCHAR(45), IN `in_city` VARCHAR(45), IN `in_address` VARCHAR(65), IN `in_email` VARCHAR(65), IN `in_phone` VARCHAR(45), IN `in_cellphone` VARCHAR(45), IN `in_checkin` DATE, IN `in_checkout` DATE, IN `in_num_ticket` INT(11), IN `in_peoplequantity` INT(11), IN `in_total` DOUBLE, IN `in_troom_id` INT(11))
+begin
+    declare lastid int;
+    declare lasttroom_id int;
+    begin
+    IF EXISTS (SELECT * FROM huesped WHERE doctype=in_doctype and docnumber=in_docnumber) THEN
+        update huesped set firstname=in_firstname,lastname=in_lastname,state=in_state,city=in_city,
+        address=in_address,email=in_email,phone=in_phone,cellphone=in_cellphone where doctype=in_doctype and docnumber=in_docnumber;
+        
+    ELSE
+       INSERT INTO huesped (firstname,lastname,doctype,docnumber,state,city,address,email,phone,cellphone) 
+       VALUES (in_firstname,in_lastname,in_doctype,in_docnumber,in_state,in_city,in_address,in_email,in_phone,in_cellphone);
+
+    END if;
+    set lastid=(select guest_id from huesped where docnumber=in_docnumber and doctype=in_doctype);
+    set lasttroom_id=(select troom_id from t_room where troom_id=in_troom_id);
+    INSERT INTO reservation(checkin,checkout,num_ticket,peoplequantity,total,troom_id,guest_id)
+       VALUES(in_checkin,in_checkout,in_num_ticket,in_peoplequantity,in_total,lasttroom_id,lastid);
+    END;
+END$$
+DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_validation`(IN in_troom_id INT)
+    NO SQL
+BEGIN
+declare temp_room int;
+BEGIN
+set temp_room= (
+                SELECT `t_room`.`roomtype`,COUNT(t_room.troom_id) as Cant
+                FROM `room` 
+	              LEFT JOIN `t_room` ON `room`.`roomtype` = `t_room`.`troom_id`
+                WHERE t_room.troom_id=in_troom_id   
+                GROUP BY t_room.roomtype
+                )
+            IF (temp_room>0) THEN
+              SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Custom error';
+            ELSE
+              DELETE FROM t_room WHERE troom_id= in_troom_id;
+            END if;
+END; 
+END$$
+DELIMITER ;

@@ -17,6 +17,12 @@ helpers.selected = (value, options) => {
     .join('\n')
 };
 
+helpers.select = ('select', function(selected, options) {
+  return options.fn(this).replace(
+      new RegExp(' value=\"' + selected + '\"'),
+      '$& selected="selected"');
+});
+
 helpers.room_status = (value) => {
   switch (value) {
     case 1:

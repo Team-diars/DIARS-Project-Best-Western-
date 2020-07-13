@@ -1,0 +1,74 @@
+<div class="container container-resp p-4">
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-header pl-5">
+                <div class="form-header-title">
+                    <div>
+                        <i class="fa fa-bed mr-2" aria-hidden="true" style="font-size: 20px;"></i>
+                    </div>
+                    <h3 class="title">Updating Reservation</h3>
+                </div>
+            </div>
+            <form class="form-body" action="/reservation/edit/{{reservation.id_reservation}}" method="POST">
+                
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input name="peoplequantity" class="form-control" type="number" min="1" max="15" value="{{reservation.peoplequantity}}" required>
+                        <label class="placeholder">People Quantity</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <select class="custom-select form-control" name="troom" id="troom_selection" required>
+                          {{#select t_room.roomtype}}
+                          {{#each rtype}}
+                            <option value="{{troom_id}}">{{capitalize roomtype}}</option>
+                          {{/each}}
+                          {{/select}}
+                        </select>
+                      <label class="placeholder">Type</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input name="checkin" class="form-control" id="check-in" value={{formatdb reservation.checkin}} required />
+                        <label class="placeholder">Check-In</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input name="checkout" class="form-control" id="check-out" value={{formatdb reservation.checkout}} required />
+                        <label class="placeholder">Check-Out</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <a class="btn btn-danger btn-block" href="/roomtype">Cancel</a>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input type="submit" class="btn btn-primary btn-block" value="Accept">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+<script>
+  $(function () {
+  $('#check-in').datepicker({
+    numberOfMonths: 1,
+    dateFormat: 'DD,d MM,yy',
+    onSelect: function (selectdate) {
+      var dt = new Date(selectdate);
+      dt.setDate(dt.getDate() + 1)
+      $('#check-out').datepicker("option", "minDate", dt);
+    }
+  });
+  $('#check-out').datepicker({
+    numberOfMonths: 1,
+    dateFormat: 'DD,d MM,yy',
+    onSelect: function (selectdate) {
+      var dt = new Date(selectdate);
+      dt.setDate(dt.getDate() - 1)
+      $('#check-in').datepicker("option", "maxDate", dt);
+    }
+  });
+});
+</script>

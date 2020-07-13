@@ -58,7 +58,6 @@ router.post('/add', isnotlogedin, async (req, res) => {
         newbooked.dateout = helpers.formatdb(newbooked.dateout);
         
         await pool.query('update reservation set status="FINISHED" where status="PENDING"')
-        
         await pool.query('call `insert_booked`(?,?,?,?,?,?,?,?,?,?,?,@out_id); select @out_id as id',
             [newbooked.worker_id, newbooked.guest_id, newbooked.datein, newbooked.dateout, newbooked.price, newbooked.cant, newbooked.room_id, newbooked.type, newbooked.total, newbooked.paid, newbooked.taxrate]
             , async (err, resp, fields) => {
