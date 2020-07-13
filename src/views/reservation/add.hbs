@@ -1,0 +1,110 @@
+<div class="container container-resp p-4">
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-header pl-5">
+                <div class="form-header-title">
+                    <div>
+                        <i class="fa fa-bed mr-2" aria-hidden="true" style="font-size: 20px;"></i>
+                    </div>
+                    <h3 class="title">Add Reservation</h3>
+                </div>
+            </div>
+            <form class="form-body" action="/reservation/add" method="POST">
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="firstname" step="1" autocomplete="off" required>
+                        <label class="placeholder">First Name</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="text" name="lastname" step="1" autocomplete="off" required>
+                        <label class="placeholder">Last Name</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <select class="form-control" size="1" name="doctype" id="select-doc"
+                      required>
+                          <option value=""> </option>
+                          <option value="Driver license">Driver license</option>
+                          <option value="ID card">ID card</option>
+                          <option value="Passport">Passport</option>
+                        </select>
+                        <label class="placeholder">Select type</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input class="form-control" type="number" name="docnumber" step="1" autocomplete="off" required>
+                        <label class="placeholder">Num Document</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <select class="form-control" size="1" name="state" id="select-state" required>
+                          <option value=""> </option>
+                        </select>
+                        <label class="placeholder">Select State</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <select class="form-control" size="1" name="city" id="select-city" required>
+                          <option value=""> </option>
+                        </select>
+                        <label class="placeholder">Select City</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input name="email" class="form-control" type="text" autocomplete="off" required>
+                        <label class="placeholder">E-mail</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input name="address" class="form-control" type="text" autocomplete="off" required>
+                        <label class="placeholder">Address</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input name="phone" class="form-control" type="number" autocomplete="off" required>
+                        <label class="placeholder">Telephone</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input name="cellphone" class="form-control" type="number" autocomplete="off" required>
+                        <label class="placeholder">Phone Number</label>
+                    </div>
+                </div>                
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input name="peoplequantity" class="form-control" type="number" min="1" max="15" required>
+                        <label class="placeholder">People Quantity</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <select class="custom-select form-control" name="troom" id="troom_selection" required>
+                          <option selected></option>
+                          {{#each rtype}}
+                          <option value="{{troom_id}}">{{capitalize roomtype}}</option>
+                          {{/each}}
+                        </select>
+                      <label class="placeholder">Type</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <input name="checkin" class="form-control" id="check-in" required />
+                        <label class="placeholder">Check-In</label>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input name="checkout" class="form-control" id="check-out" required />
+                        <label class="placeholder">Check-Out</label>
+                    </div>
+                </div>
+                <div class="marginRow">
+                    <div class="form-group col d-flex justify-content-center">
+                        <a class="btn btn-danger btn-block" href="/reservation">Cancel</a>
+                    </div>
+                    <div class="form-group col d-flex justify-content-center">
+                        <input type="submit" class="btn btn-primary btn-block" value="Accept">
+                    </div>
+                </div>            
+            </form>
+        </div>
+    </div>
+</div>
+
