@@ -88,6 +88,7 @@ $(function () {
     $('.reservation-wrapper-details').hide()
     $('.reservation-wrapper-reservation').show(500)
   })
+  return false
 })
 
 //todo: In case of success ticket
