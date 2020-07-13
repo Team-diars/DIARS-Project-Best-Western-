@@ -10,6 +10,9 @@
                             </div>
                             <h4>Reservations</h4>
                         </div>
+                        <a class="btn btn-success" href="reservation/add">
+                            <i class="fa fa-plus mr-1" aria-hidden="true"></i>Add
+                        </a>
                     </div>
                     <div class="form-group row mx-auto mt-2">
                         <input class="form-control" type="number" id="searchbar" placeholder="Filter by ticket number">
@@ -40,27 +43,32 @@
                                     <td>{{peoplequantity}}</td>
                                     <td>{{formatday checkin}}</td>
                                     <td>{{formatday checkout}}</td>
-                                    <td>{{total}}</td>
+                                    <td>{{money total}}</td>
                                     <td>{{roomtype}}</td>
                                     <td id="status">{{status}}</td>
                                     <td>
-                                      {{#if success_delete}}
+                                      {{#if success}}
                                       <a href="reservation/checked/{{id_reservation}}">
                                           <button id="btnCheck" name="btnCheck" type="button" class="btn btn-success">
                                               <i class="fa fa-check" aria-hidden="true"></i>
                                           </button>
                                       </a>   
                                       {{else}}
+                                        <a href="reservation/checked/{{id_reservation}}">
+                                          <button id="btnCheck" name="btnCheck" type="button" class="btn btn-success">
+                                              <i class="fa fa-check" aria-hidden="true"></i>
+                                          </button>
+                                        </a>   
                                         <a href="reservation/edit/{{id_reservation}}">
                                           <button type="button" class="btn btn-primary">
                                               <i class="fas fa-edit"></i>
                                           </button>
                                         </a>
-                                        <a href="reservation/checked/{{id_reservation}}">
-                                          <button id="btnCheck" name="btnCheck" type="button" class="btn btn-success">
-                                              <i class="fa fa-check" aria-hidden="true"></i>
+                                        <a href="reservation/delete/{{id_reservation}}">
+                                          <button type="button" class="btn btn-danger">
+                                              <i class="fa fa-times"></i>
                                           </button>
-                                      </a>   
+                                        </a>
                                       {{/if}}
                                     </td>
                                 </tr>
